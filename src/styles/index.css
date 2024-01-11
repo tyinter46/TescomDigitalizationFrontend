@@ -1,0 +1,264 @@
+body {
+  margin: 0;
+  font-family: "Heebo", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+    "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+/********* Styles for Calender Screen **********/
+td {
+  cursor: pointer;
+}
+
+.fc-scrollgrid-liquid {
+  height: 77% !important;
+}
+
+@media screen and (max-width: 1028px) {
+  .fc-scrollgrid-liquid {
+    height: 100% !important;
+  }
+}
+
+.fc-timeGridWeek-view .fc-scrollgrid-sync-table {
+  display: none !important;
+}
+
+.fc-timeGridDay-view .fc-scrollgrid-sync-table {
+  display: none !important;
+}
+
+.fc-theme-standard .fc-scrollgrid {
+  border-radius: 12px !important;
+  background-color: white;
+  border-color: #e2e8f0 !important;
+}
+
+.fc-theme-standard th {
+  border-right: none !important;
+}
+
+.fc-theme-standard td {
+  border: 1px solid #c1d1c047 !important;
+}
+
+.fc-timegrid-divider .fc-cell-shaded,
+.fc-scrollgrid-section {
+  height: 0px !important;
+}
+
+.fc-timeGridWeek-view tbody tr:nth-child(2),
+.fc-timeGridDay-view tbody tr:nth-child(2) {
+  display: none;
+}
+
+.fc-timegrid-divider {
+  background-color: #e2e8f0 !important;
+}
+
+.fc .fc-button-primary {
+  background-color: #c7e8d2 !important;
+  border-color: #c7e8d2 !important;
+  color: #07aa3d !important;
+}
+
+.fc-button-group {
+  background-color: #c7e8d2 !important;
+  border-radius: 10px;
+  display: flex;
+  gap: 0.2em;
+  padding: 0.2em;
+}
+
+.fc-button-group button {
+  border-radius: 8px !important;
+  width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  .fc-button-group {
+    flex-direction: column;
+  }
+}
+
+.fc-timeGridDay-view .fc-scrollgrid-sync-inner {
+  text-align: left;
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.fc-timeGridDay-view .fc-col-header-cell-cushion {
+  color: #07aa3d;
+}
+
+.fc-timeGridWeek-view .fc-scrollgrid-sync-inner {
+  text-align: left;
+  height: 70px;
+  display: flex;
+  align-items: center;
+}
+
+.fc-timeGridWeek-view .fc-col-header-cell-cushion {
+  width: 20%;
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+
+@media screen and (max-width: 768px) {
+  .fc-dayGridMonth-view .fc-col-header-cell-cushion,
+  .fc-timeGridDay-view .fc-col-header-cell-cushion,
+  .fc-timeGridWeek-view .fc-col-header-cell-cushion {
+    width: 50%;
+    font-weight: 500;
+    font-size: 1rem;
+  }
+}
+
+.fc-col-header-cell-cushion {
+  padding: 5px 5px !important;
+  color: #64748b;
+  font-weight: 400;
+  font-size: 1.3rem;
+  line-height: 1.3em;
+}
+
+.fc-timegrid-slot-label-cushion {
+  color: #64748b !important;
+}
+
+.fc-scrollgrid-section-body table tr {
+  height: 35px;
+}
+
+.fc-button {
+  border: none !important;
+}
+
+.fc-daygrid-day-top {
+  justify-content: center;
+  flex-direction: row;
+}
+
+.fc-daygrid-day-number {
+  font-weight: 600;
+}
+
+.fc-timeGridDay-view .fc-timegrid-slot-lane {
+  background-color: #f9fffa !important;
+  z-index: -1;
+}
+
+.fc-daygrid-day.fc-day-today {
+  background-color: #d3efdb !important;
+  z-index: -1;
+}
+
+.fc-daygrid-day:hover {
+  background-color: #d3efdb !important;
+  z-index: -10;
+}
+
+col {
+  width: 60px !important;
+}
+
+.fc .fc-daygrid-event-harness {
+  background-color: #3b82f642;
+  color: #3b82f6;
+}
+
+.fc-event-title {
+  font-weight: 400 !important;
+  white-space: initial;
+}
+
+.fc-event-time {
+  font-weight: 500 !important;
+  /* text-align: left; */
+}
+
+.fc-direction-ltr .fc-daygrid-event.fc-event-end {
+  display: flex;
+  align-items: baseline;
+}
+
+@media screen and (max-width: 768px) {
+  .fc-direction-ltr .fc-daygrid-event.fc-event-end {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+}
+
+/* previous developer's css */
+.fc .fc-button-primary:not(:disabled).fc-button-active:focus,
+.fc .fc-button-primary:not(:disabled):active:focus,
+.fc .fc-button-primary:not(:disabled).fc-prev-button:focus,
+.fc .fc-button-primary:not(:disabled).fc-next-button:focus {
+  box-shadow: none !important;
+}
+
+.fc .fc-button-primary:not(:disabled).fc-button-active,
+.fc .fc-button-primary:not(:disabled):active {
+  background-color: #07aa3d !important;
+  color: #fff !important;
+  border-radius: 7px !important;
+}
+
+.fc-toolbar-chunk div:first-child {
+  display: flex !important;
+  align-items: center !important;
+}
+
+.fc-toolbar-chunk:first-child button {
+  width: 19px;
+  height: 19px;
+  background-color: white !important;
+  border: 1px solid #8e8e935c !important;
+  color: #8e8e93 !important;
+}
+
+.fc-toolbar-chunk:first-child button > span::before {
+  position: relative;
+  top: -15px;
+  left: -12px;
+  font-size: 15px;
+}
+
+.fc-toolbar-chunk:first-child {
+  top: 0px;
+}
+
+.fc-header-toolbar div:last-child .fc-button-group button {
+  padding: 0.4em 1.4em;
+}
+
+.fc .fc-prev-button:not(:disabled).fc-button-active,
+.fc .fc-prev-button:not(:disabled):active,
+.fc .fc-next-button:not(:disabled).fc-button-active,
+.fc .fc-next-button:not(:disabled):active {
+  background-color: transparent !important;
+  color: #8e8e93 !important;
+}
+
+.fc .fc-toolbar-title {
+  font-size: 1.688rem !important;
+  margin: 0 10px !important;
+  color: #64748b;
+}
+
+.fc-direction-ltr .fc-button-group > .fc-button:not(:last-child) {
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+.fc-direction-ltr .fc-button-group > .fc-button:last-child {
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
