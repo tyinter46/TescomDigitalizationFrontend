@@ -1,0 +1,9 @@
+{
+  "prettier.semi": true,
+  "prettier.endOfLine": "auto",
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit"
+  },
+  "editor.formatOnSave": false,
+  "prettier.printWidth": 100
+}

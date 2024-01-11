@@ -1,4 +1,5 @@
 {
+   "root": true,
   "env": {
     "browser": true,
     "es2021": true,
@@ -9,6 +10,7 @@
     "plugin:react/recommended",
     "standard-with-typescript",
     "plugin:prettier/recommended"
+ 
   ],
   "overrides": [],
   "parser": "@typescript-eslint/parser",
@@ -17,7 +19,8 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["react", "@typescript-eslint", "prettier"],
+  "plugins": ["react", "@typescript-eslint", "prettier", "promise"],
+
   "rules": {
     "react/react-in-jsx-scope": ["off"],
     "react/jsx-uses-react": ["off"],
@@ -27,6 +30,13 @@
     "@typescript-eslint/no-invalid-void-type": 0,
     "@typescript-eslint/explicit-function-return-type": ["off"],
     "@typescript-eslint/restrict-template-expressions": ["off"],
+    "@typescript-eslint/no-non-null-assertion": ["off"],
+    "@typescript-eslint/no-misused-promises": "error",
+    "@typescript-eslint/consistent-type-exports": "error",
+    "@typescript-eslint/consistent-type-imports": "error",
+    "@typescript-eslint/no-floating-promises": "error",
+    "@typescript-eslint/non-nullable-type-assertion-style": ["error"],
+   
     "no-restricted-imports": [
       "error",
       {
@@ -34,6 +44,13 @@
       }
     ]
   },
+  "prettier/prettier": [
+    "error",
+    {
+      "endOfLine": "auto"
+    }
+    
+  ],
   "globals": {
     "window": true,
     "document": true
