@@ -17,7 +17,7 @@ const HomeView = () => {
           <Button
             to={SIGNUP}
             variant="outline"
-            className="mt-inherit text-base md:text-sm bg-yellow rounded-full text-black hover:bg-black-100 hover:text-white   "
+            className="mt-inherit bg-yellow text-base md:text-sm bg-yellow rounded-full text-black hover:bg-black-100 hover:text-white"
           >
             Get Started
           </Button>

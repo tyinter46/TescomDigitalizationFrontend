@@ -14,7 +14,7 @@ const NavLink = ({ to, children }: Props) => {
       className={`${
         pathname === to
           ? "text-primary border-b-2 border-b-primary"
-          : "text-white hover:text-primary"
+          : "text-black hover:text-primary"
       } pb-px px-1`}
     >
       {children}
