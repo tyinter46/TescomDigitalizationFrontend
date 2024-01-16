@@ -9,12 +9,11 @@ const HomeView = () => {
         <img src={yellowPolygon} alt="yellowPolygon" />
         <img src={whitePolygon} alt="whitePolygon" />
       </div>
-      <div className="flex flex-row justify-evenly mt-20 w-inherit">
-        <div className="text-wrap text-base text-white w-1/2 sm: visibility-hidden">
-          Our innovative platform is designed to empower Ogun State Teaching Service Commission with
-          a comprehensive solution for efficient staff management
+      <div className="flex flex-row justify-evenly mt-40 w-inherit">
+        <div className="text-wrap text-base content-center text-white w-1/2 sm: visibility-hidden">
+          Unlock Efficiency with Our Advanced Staff Management Platform
         </div>
-        <div className="flex flex-row mt-5  content-center bg-inherit">
+        <div className="flex flex-row   content-center bg-inherit">
           <Button
             to={SIGNUP}
             variant="outline"
@@ -28,3 +27,5 @@ const HomeView = () => {
   );
 };
 export default HomeView;
+// Our innovative platform is designed to empower Ogun State Teaching Service Commission with
+// a comprehensive solution for efficient staff management
