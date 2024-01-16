@@ -9,15 +9,15 @@ const HomeView = () => {
         <img src={yellowPolygon} alt="yellowPolygon" />
         <img src={whitePolygon} alt="whitePolygon" />
       </div>
-      <div className="flex flex-row justify-evenly mt-40 w-inherit">
-        <div className="text-wrap text-base content-center text-white w-1/2 sm: visibility-hidden">
+      <div className="mt-40 flex md: flex flex-row justify-evenly mt-40 w-inherit ">
+        <div className="text-wrap text-base content-center text-white block w-1/2 hidden md:block">
           Unlock Efficiency with Our Advanced Staff Management Platform
         </div>
-        <div className="flex flex-row   content-center bg-inherit">
+        <div className="flex flex-row   content-center bg-inherit ">
           <Button
             to={SIGNUP}
             variant="outline"
-            className="text-sm bg-yellow rounded-full text-black hover:bg-black-100 hover:text-white"
+            className="mt-inherit text-base md:text-sm bg-yellow rounded-full text-black hover:bg-black-100 hover:text-white   "
           >
             Get Started
           </Button>
