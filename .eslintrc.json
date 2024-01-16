@@ -1,5 +1,5 @@
 {
-   "root": true,
+  "root": true,
   "env": {
     "browser": true,
     "es2021": true,
@@ -10,7 +10,6 @@
     "plugin:react/recommended",
     "standard-with-typescript",
     "plugin:prettier/recommended"
- 
   ],
   "overrides": [],
   "parser": "@typescript-eslint/parser",
@@ -36,7 +35,7 @@
     "@typescript-eslint/consistent-type-imports": "error",
     "@typescript-eslint/no-floating-promises": "error",
     "@typescript-eslint/non-nullable-type-assertion-style": ["error"],
-   
+
     "no-restricted-imports": [
       "error",
       {
@@ -44,13 +43,7 @@
       }
     ]
   },
-  "prettier/prettier": [
-    "error",
-    {
-      "endOfLine": "auto"
-    }
-    
-  ],
+  "prettier/prettier": 0,
   "globals": {
     "window": true,
     "document": true

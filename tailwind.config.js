@@ -71,8 +71,8 @@ module.exports = {
           100: "#fbafaf"
         },
         yellow: {
-          DEFAULT: "##ffff00",
-          100: "##c1c100"
+          DEFAULT: "#d8bc00",
+          100: "#c1c100"
         },
         citrus: "#F26D21",
         background: "#F7F7F7",
