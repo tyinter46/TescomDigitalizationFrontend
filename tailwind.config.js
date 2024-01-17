@@ -43,7 +43,7 @@ module.exports = {
     extend: {
       colors: {
         primary: {
-          DEFAULT: "#50C878",
+          DEFAULT: "#047232",
           100: "#008753"
         },
         red: {
@@ -67,12 +67,12 @@ module.exports = {
           100: "#041723"
         },
         brown: {
-          DEFAULT: "#005C39",
+          DEFAULT: "#9D3C0B",
           100: "#fbafaf"
         },
         yellow: {
-          DEFAULT: "##ffff00",
-          100: "##c1c100"
+          DEFAULT: "#e6f70f",
+          100: "#c1c100"
         },
         citrus: "#F26D21",
         background: "#F7F7F7",

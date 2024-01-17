@@ -1,3 +1,6 @@
 const IMG_PATH = "/img/logo";
+const POLYGON_PATH = "/img/polygon";
 
 export const ogLogo = `${IMG_PATH}/OGLOGO.png`;
+export const whitePolygon = `${POLYGON_PATH}/whitePolygon.png`;
+export const yellowPolygon = `${POLYGON_PATH}/yellowPolygon.png`;

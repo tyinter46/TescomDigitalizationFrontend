@@ -1,1 +1,1 @@
-export * as TESCOMlogos from "./logos";
+export * as Tescomlogos from "./logos";

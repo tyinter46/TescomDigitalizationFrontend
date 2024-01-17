@@ -52,15 +52,7 @@
     "extends": [
       "react-app",
       "react-app/jest"
-    ],
-    "rules": {
-      "prettier/prettier": [
-        "error",
-        {
-          "endOfLine": "auto"
-        }
-      ]
-    }
+    ]
   },
   "lint-staged": {
     "*.{js,jsx, tsx, ts}": [
