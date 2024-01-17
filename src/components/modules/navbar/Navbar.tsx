@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-import { HOME, SIGNUP } from "routes/CONSTANTS";
+import { HOME, LOGIN, SIGNUP } from "routes/CONSTANTS";
 import { Button } from "components/widgets/button";
 // interface Props {
 //     transparent?: boolean;
@@ -19,7 +19,7 @@ const Navbar = () => {
       <div className="flex flex-row justify-end mt-0">
         <div className="flex flex-row justify-end w-80 gap-4">
           <div className="vertical-align-bottom mt-2">
-            <NavLink to={SIGNUP}>Log In</NavLink>
+            <NavLink to={LOGIN}>Log In</NavLink>
           </div>
           <Button
             to={SIGNUP}
