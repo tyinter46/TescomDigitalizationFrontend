@@ -36,7 +36,12 @@ const Input = ({ end, size = "md", className = "", ...props }: Props) => {
           type={password ? "password" : "text"}
           className="w-full h-full bg-transperent"
         />
-        <div className="cursor-pointer" onClick={() => setPassword(!password)}>
+        <div
+          className="cursor-pointer"
+          onClick={() => {
+            setPassword(!password);
+          }}
+        >
           {password ? "show" : "hide"}
         </div>
       </div>
@@ -48,7 +53,9 @@ const Input = ({ end, size = "md", className = "", ...props }: Props) => {
       <PhoneInput
         country={"ng"}
         preferredCountries={["ng"]}
-        onChange={(_, __, e) => props.onChange(e)}
+        onChange={(_, __, e) => {
+          props.onChange(e);
+        }}
         containerClass={`${className} w-full flex items-center border rounded-[6px]`}
         containerStyle={{ width: "100%" }}
         inputStyle={{ width: "100%", height: "64px", paddingLeft: "72px", border: "none" }}

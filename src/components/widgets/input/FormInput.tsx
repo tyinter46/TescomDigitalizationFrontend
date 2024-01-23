@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import Input, { Props as InputProp } from "./Input";
 
 type Props = {
