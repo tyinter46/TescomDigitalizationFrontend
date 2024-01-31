@@ -1,5 +1,6 @@
 import { useState } from "react";
 import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
 
 import type { ReactNode, ComponentProps } from "react";
 
@@ -56,6 +57,8 @@ const Input = ({ end, size = "md", className = "", ...props }: Props) => {
         onChange={(_, __, e) => {
           props.onChange(e);
         }}
+        countryCodeEditable={false}
+        disableDropdown={true}
         containerClass={`${className} w-full flex items-center border rounded-[6px]`}
         containerStyle={{ width: "100%" }}
         inputStyle={{ width: "100%", height: "64px", paddingLeft: "72px", border: "none" }}
