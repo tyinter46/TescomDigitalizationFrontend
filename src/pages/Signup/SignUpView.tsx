@@ -20,37 +20,10 @@ const SignupView = ({ loading, formik }: Props) => {
   return (
     <>
       <Navbar />
-      <div className="sm: justify-self-center w-full mt-20 ">
+      <div className="sm: justify-self-center w-full mt-20 h-80">
         <form className="space-y-3">
           <div className="gap-4">
             <label htmlFor="ogNumber" className="block text-lg text-gray-200"></label>
-            {/* <Input
-              size="lg"
-              type="text"
-              id="ogNumber"
-              placeholder="Og Number"
-              onChange={() => {
-                console.log("hi");
-              }}
-              className="w-full"
-            />
-            <label
-              htmlFor="phone Number"
-              className="flex text-black text-[18px] relative w-full mb-3"
-            >
-              Phone Number
-            </label>
-            <Input
-              required
-              type="tel"
-              id="phoneNumber"
-              name="telNumber"
-              autoComplete="on"
-              onChange={() => {
-                console.log("hi");
-              }}
-              className="block py-2.5 px-2 w-full text-gray-900 sm:text-[18px] text-[14px] rounded-md h-[54px] border-2 border-green-600"
-            /> */}
 
             <FormInput
               required
@@ -111,7 +84,7 @@ const SignupView = ({ loading, formik }: Props) => {
             <Button
               size="lg"
               type="submit"
-              className="w-full text-black flex items-center bg-yellow  text-black justify-center mt-4 hover:bg-[#50c878] hover:text-white"
+              className="w-full text-black flex items-center bg-[#50c878] text-black justify-center mt-4 hover:bg-[#50c878] hover:text-white"
             >
               {loading ? <Loader /> : "Register Account"}
             </Button>

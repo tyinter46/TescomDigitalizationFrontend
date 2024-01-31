@@ -15,7 +15,7 @@ export const SignupContainer = () => {
       phoneNumber: Yup.string().required("Phone Number is Required"),
       confirmPhoneNumber: Yup.string()
         .required("Phone Number is Required")
-        .oneOf([Yup.ref("phoneNumber")], "Does not match with field1!"),
+        .oneOf([Yup.ref("phoneNumber")], "Does not match with the phone number"),
       password: Yup.string()
         .required("Password is required")
         .matches(
