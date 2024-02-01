@@ -20,7 +20,7 @@ const SignupView = ({ loading, formik }: Props) => {
   return (
     <>
       <Navbar />
-      <div className="sm: justify-self-center w-full mt-20 h-80">
+      <div className="sm: justify-self-center w-full mt-20 h-80 padding-20">
         <form className="space-y-3">
           <div className="gap-4">
             <label htmlFor="ogNumber" className="block text-lg text-gray-200"></label>
@@ -29,6 +29,7 @@ const SignupView = ({ loading, formik }: Props) => {
               required
               size="lg"
               type="text"
+              className="text-9xl"
               id="ogNumber"
               name="ogNumber"
               label="Your OG-Number"
@@ -45,6 +46,7 @@ const SignupView = ({ loading, formik }: Props) => {
               type="password"
               id="password"
               name="password"
+              maxLength={10}
               label="Create password"
               placeholder="Enter password"
               errors={formik.errors.password}
@@ -60,12 +62,13 @@ const SignupView = ({ loading, formik }: Props) => {
               id="tel"
               name="tel"
               label="Phone Number"
-              placeholder="Phone Number"
+              placeholder="+234 80 123 456 7"
               errors={formik.errors.password}
               touched={formik.touched.password}
               onChange={() => {
-                console.log("hi");
+                console.log(formik.values.phoneNumber);
               }}
+              className=""
             />
             <FormInput
               required
@@ -78,7 +81,7 @@ const SignupView = ({ loading, formik }: Props) => {
               errors={formik.errors.password}
               touched={formik.touched.password}
               onChange={() => {
-                console.log("hi");
+                console.log(formik.values.phoneNumber);
               }}
             />
             <Button
