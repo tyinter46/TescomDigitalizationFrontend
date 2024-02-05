@@ -1,8 +1,8 @@
 import { Routes, Route } from "react-router-dom";
 
-import { Home, Signup, AboutUs } from "pages";
+import { Home, Signup, AboutUs, Login } from "pages";
 
-import { HOME, SIGNUP, ABOUT } from "./CONSTANTS";
+import { HOME, SIGNUP, ABOUT, LOGIN } from "./CONSTANTS";
 
 import type { FC } from "react";
 // import {ProtectedRote, PublicRoute} from "components"
@@ -15,6 +15,7 @@ const RouterConfig: FC = () => {
         <Route path={HOME} element={<Home />} />
         <Route path={SIGNUP} element={<Signup />} />
         <Route path={ABOUT} element={<AboutUs />} />
+        <Route path={LOGIN} element={<Login />} />
       </Routes>
     </div>
   );
