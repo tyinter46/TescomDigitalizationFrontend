@@ -87,7 +87,7 @@ const SignupView = ({ loading, formik }: Props) => {
             <Button
               size="lg"
               type="submit"
-              className="w-full text-black flex items-center bg-[#50c878] text-black justify-center mt-4 hover:bg-[#50c878] hover:text-white"
+              className="w-full text-black flex items-center bg-green text-black justify-center mt-4 hover:bg-[#50c878] hover:text-white"
             >
               {loading ? <Loader /> : "Register Account"}
             </Button>

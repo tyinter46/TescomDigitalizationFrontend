@@ -1,8 +1,7 @@
 /* eslint-disable @typescript-eslint/consistent-type-imports */
-import { Button, FormInput, Loader } from "components/widgets";
+import { Button, FormInput, Loader, Navbar } from "components";
 import { SIGNUP } from "routes/CONSTANTS";
 import { Link } from "react-router-dom";
-import Navbar from "components/modules/navbar/Navbar";
 import { FormikProps } from "formik";
 
 // import { Landing } from "components/layouts";
@@ -56,14 +55,14 @@ const LoginView = ({ loading, formik }: Props) => {
             <Button
               size="lg"
               type="submit"
-              className="w-full text-black flex items-center bg-[#50c878] text-black justify-center mt-4 hover:bg-[#50c878] hover:text-white"
+              className="w-full text-black flex items-center bg-green text-black justify-center mt-4 hover:bg-[#50c878] hover:text-white"
             >
               {loading ? <Loader /> : "Login Account"}
             </Button>
             <p className="my-5 text-lg text-gray-200 text-center">
               Don't have an account?
               <Link to={SIGNUP}>
-                <span className="text-primary">Sign up</span>
+                <span className="text-primary"> Sign up</span>
               </Link>
             </p>
           </div>

@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { Link } from "react-router-dom";
 import type { ComponentProps, ReactNode } from "react";
 
@@ -34,7 +33,7 @@ const Button = ({
   const Button = () => (
     <button
       className={`${getSize(size)} ${
-        variant === "full" ? "text-black bg-yellow" : " border-2 border-primary bg-yellow"
+        variant === "full" ? "text-black bg-green" : " border-2 border-primary bg-yellow"
       } ${className}  rounded-[6px] px-5 py-2 `}
       {...rest}
     >
