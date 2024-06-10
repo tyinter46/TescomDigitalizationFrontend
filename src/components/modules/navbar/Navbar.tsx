@@ -9,7 +9,6 @@ import NavLink from "./NavLink";
 
 const Navbar = () => {
   const location = useLocation();
-  console.log(location);
   return (
     <div
       className={
@@ -25,13 +24,19 @@ const Navbar = () => {
       </div>
       <div className="flex flex-row justify-end mt-0">
         <div className="flex flex-row justify-end w-80 gap-4">
-          <div className="vertical-align-bottom mt-2">
+          <div
+            className={location.pathname === "/login" ? "display-hidden" : "mt-2 hover:text-white"}
+          >
             <NavLink to={LOGIN}>Log In</NavLink>
           </div>
           <Button
             to={SIGNUP}
             variant="full"
-            className="bg-yellow text-black border border-black-200 hover:bg-black-100 hover:text-white rounded-full mt-0.7"
+            className={
+              location.pathname === "/auth/register"
+                ? "hidden"
+                : "bg-yellow text-black border border-black-200 hover:bg-black-100 hover:text-white rounded-full mt-0.7"
+            }
           >
             Sign Up
           </Button>

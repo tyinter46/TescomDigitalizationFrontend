@@ -20,7 +20,11 @@ const FormInput = ({ id, label, errors, touched, required, ...rest }: Props) => 
 
       <Input
         {...rest}
-        className={`${error ? "border-red text-red text-lg placeholder:text-red" : ""} w-full`}
+        className={`${
+          error
+            ? "border-red text-red text-lg font-bold placeholder:text-red"
+            : " text-lg maxLength-10"
+        } w-full`}
       />
       {error && <p className="text-red text-base">{errors}</p>}
     </div>

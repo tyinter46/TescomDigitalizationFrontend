@@ -59,14 +59,14 @@ const Input = ({ end, size = "md", className = "", ...props }: Props) => {
         }}
         countryCodeEditable={false}
         disableDropdown={true}
-        containerClass={`${className} w-full flex items-center border rounded-[6px]`}
+        containerClass={`${className} w-full flex items-center border rounded-[6px] `}
         containerStyle={{ width: "100%" }}
         inputStyle={{ width: "100%", height: "64px", paddingLeft: "72px", border: "none" }}
         buttonStyle={{
           top: "25%",
           height: "50%",
           padding: "0 8px 0 16px",
-          backgroundColor: "#ffffff",
+          backgroundColor: "brown",
           border: "none",
           borderRadius: "6px 0 0 6px",
           borderRight: "1px solid #065426"
@@ -74,7 +74,8 @@ const Input = ({ end, size = "md", className = "", ...props }: Props) => {
         inputProps={{
           id: props.id,
           name: props.name,
-          placeholder: props.placeholder
+          placeholder: props.placeholder,
+          maxLength: 17
         }}
       />
     );
