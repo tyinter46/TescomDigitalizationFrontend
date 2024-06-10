@@ -24,7 +24,6 @@
     "incremental": true,
     "noImplicitReturns": true,
     // "suppressImplicitAnyIndexErrors": true,
-    "ignoreDeprecations": "5.0",
     "experimentalDecorators": true
   },
   "includes": ["src", "**/*.tsx", "**/*.ts", "**/*.js"],
