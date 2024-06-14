@@ -4,6 +4,7 @@ import SignupView from "./SignUpView";
 
 export const SignupContainer = () => {
   const isLoading = false;
+  const isVerifying = true;
   const formik = useFormik({
     initialValues: {
       ogNumber: "",
@@ -29,5 +30,5 @@ export const SignupContainer = () => {
     }
   });
 
-  return <SignupView formik={formik} loading={isLoading} />;
+  return <SignupView formik={formik} loading={isLoading} isVerifying={isVerifying} />;
 };

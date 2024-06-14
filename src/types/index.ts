@@ -1,4 +1,5 @@
 export interface UserDetails {
+  _id: string;
   tscFileNumber: string;
   schoolOfPresentPosting: string;
   zone: string;
@@ -13,23 +14,55 @@ export interface UserDetails {
   // dateOfFirstAppointment?: Date;
   // dateOfLastPromotion?: Date;
   // dateOfBirth?: Date;
-  gradeLevel: number;
+  gradeLevel: string;
   pfa: string;
   pensionNumber: string;
   // dateOfRetirement?: Date;
   professionalStatus: string;
   email: string;
   ogNumber: string;
-  password: string;
-  confirmationCode: string;
-  profilePhoto: string;
-  tetiaryCertificate: string;
+  // password: string;
+  // confirmationCode: string;
+  // profilePhoto: string;
+  // tetiaryCertificate: string;
+  // primarySchoolCertificate?: string;
+  // secondarySchoolCert?: string;
+  // firstAppointmentLetter?: string;
+  // lastPromotionLetter?: string;
+  // birthCertificate?: string;
+  // serviceStatus?: string;
+  // staffType?: string;
+  // remark?: string;
+}
+
+export interface Settings {
+  tscFileNumber: string;
+  schoolOfPresentPosting: string;
+  zone: string;
+  division: string;
+  nationality: string;
+  stateOfOrigin: string;
+  lgOgOrigin: string;
+  ward: string;
+  qualifications: Qualifications[];
+  dateOfPresentSchoolPosting: string;
+  cadre: string;
+  // dateOfFirstAppointment?: Date;
+  // dateOfLastPromotion?: Date;
+  // dateOfBirth?: Date;
+  gradeLevel: string;
+  pfa: string;
+  pensionNumber: string;
+  // dateOfRetirement?: Date;
+  professionalStatus: string;
+  email: string;
+  // profilePhoto: string;
+  // tetiaryCertificate: string;
   primarySchoolCertificate?: string;
   secondarySchoolCert?: string;
   firstAppointmentLetter?: string;
   lastPromotionLetter?: string;
   birthCertificate?: string;
-  serviceStatus?: string;
   staffType?: string;
   // remark?: string;
 }

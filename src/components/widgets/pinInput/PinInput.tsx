@@ -1,19 +1,27 @@
 import PinInput from "react-pin-input";
+// import { useState } from "react";
 
 function InputPin() {
+  // const [input, setInput] = useState([]);
+
+  // const handleChange = (event: any) => {
+  //   setInput(event.target.value);
+  // };
   return (
     <PinInput
       length={6}
       initialValue=""
-      secret
-      secretDelay={100}
+      secret={false}
+      // secretDelay={100}
       onChange={(value, index) => {
         console.log(value, index);
+        //
+        // handleChange(value);
       }}
       type="numeric"
       inputMode="number"
-      style={{ padding: "10px" }}
-      inputStyle={{ borderColor: "red" }}
+      style={{ padding: "20px" }}
+      inputStyle={{ borderColor: "green" }}
       inputFocusStyle={{ borderColor: "blue" }}
       onComplete={(value, index) => {
         console.log(value, index);

@@ -1,14 +1,16 @@
 /* eslint-disable @typescript-eslint/consistent-type-imports */
-import { Button, FormInput, Loader } from "components/widgets";
+import { Button, FormInput, Loader, InputPin } from "components/widgets";
 import { LOGIN } from "routes/CONSTANTS";
 import { Link } from "react-router-dom";
 import Navbar from "components/modules/navbar/Navbar";
 import { FormikProps } from "formik";
+// import { useState } from "react";
 
 // import { Landing } from "components/layouts";
 
 interface Props {
   loading: boolean;
+  isVerifying: boolean;
   formik: FormikProps<{
     ogNumber: string;
     phoneNumber: string;
@@ -16,12 +18,18 @@ interface Props {
   }>;
 }
 
-const SignupView = ({ loading, formik }: Props) => {
-  return (
+// const [isVerifying, setIsVerifying] = useState(false)
+
+const SignupView = ({ loading, isVerifying, formik }: Props) => {
+  isVerifying = true;
+  return isVerifying ? (
+    <InputPin />
+  ) : (
     <>
       <Navbar />
+
       <div className="sm: justify-self-center w-full mt-20 h-80 padding-20">
-        <form className="space-y-3">
+        <form onSubmit={formik.handleSubmit} className="space-y-3">
           <div className="gap-4">
             <label htmlFor="ogNumber" className="block text-lg text-gray-200"></label>
 
@@ -36,9 +44,7 @@ const SignupView = ({ loading, formik }: Props) => {
               placeholder="OG-number"
               errors={formik.errors.ogNumber}
               touched={formik.touched.ogNumber}
-              onChange={() => {
-                console.log("hi");
-              }}
+              onChange={formik.handleChange}
             />
             <FormInput
               required
