@@ -15,24 +15,25 @@ interface Props {
     ogNumber: string;
     phoneNumber: string;
     password: string;
+    confirmPhoneNumber: string;
   }>;
 }
 
 // const [isVerifying, setIsVerifying] = useState(false)
 
 const SignupView = ({ loading, isVerifying, formik }: Props) => {
-  isVerifying = true;
   return isVerifying ? (
-    <InputPin />
+    <>
+      <Navbar></Navbar>
+      <InputPin />
+    </>
   ) : (
     <>
       <Navbar />
-
       <div className="sm: justify-self-center w-full mt-20 h-80 padding-20">
-        <form onSubmit={formik.handleSubmit} className="space-y-3">
+        <form onSubmit={formik.handleSubmit} className="space-y-5">
           <div className="gap-4">
             <label htmlFor="ogNumber" className="block text-lg text-gray-200"></label>
-
             <FormInput
               required
               size="lg"
@@ -57,38 +58,31 @@ const SignupView = ({ loading, isVerifying, formik }: Props) => {
               placeholder="Enter password"
               errors={formik.errors.password}
               touched={formik.touched.password}
-              onChange={() => {
-                console.log("hi");
-              }}
+              onChange={formik.handleChange}
             />
             <FormInput
-              required
+            required
               size="lg"
               type="tel"
-              id="tel"
-              name="tel"
+              id="phoneNumber"
+              name="phoneNumber"
               label="Phone Number"
-              placeholder="+234 80 123 456 7"
-              errors={formik.errors.password}
-              touched={formik.touched.password}
-              onChange={() => {
-                console.log(formik.values.phoneNumber);
-              }}
-              className=""
+              // placeholder="+234 80 123 456 7"
+              errors={formik.errors.phoneNumber}
+              touched={formik.touched.phoneNumber}
+              onChange={formik.handleChange}
             />
             <FormInput
-              required
+            required
               size="lg"
               type="tel"
-              id="tel"
-              name="confimPhoneNumber"
-              label="Phone Number"
-              placeholder="Confirm Phone Number"
-              errors={formik.errors.password}
-              touched={formik.touched.password}
-              onChange={() => {
-                console.log(formik.values.phoneNumber);
-              }}
+              id="confirmPhoneNumber"
+              name="confirmPhoneNumber"
+              label="Confirm Phone Number"
+              // placeholder="Confirm Phone Number"
+              errors={formik.errors.confirmPhoneNumber}
+              touched={formik.touched.confirmPhoneNumber}
+              onChange={formik.handleChange}
             />
             <Button
               size="lg"

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/consistent-type-imports */
-import { Button, Input, Loader } from "components";
+import { Button, Input, Loader, Navbar } from "components";
 import { SvgTesMessageSquareEdit, TesCheckedboxMarkedCircle } from "components/icons";
-// import { user } from "assets/images";
+import { user } from "assets/images";
 import { ProfileViewModal } from "components/modules/modals";
 import { useState } from "react";
 import { UserDetails, Settings } from "types";
@@ -31,26 +31,27 @@ function ProfileView({ loading, create, userDetails, pictureUpload, image, isLoa
   };
   return (
     <div>
+      <Navbar />
       <div>
         {isLoading ? (
           <p className="flex justify-center">Loading Profile View...</p>
         ) : (
-          <div>
+          <div className="block mt-[30px] bg-black">
             <Formik
               initialValues={{}}
               onSubmit={handlePhotoUpload}
               enableReinitialize
               validationSchema={{}}
             >
-              <div className="relative flex justify-center mb-10">
+              <div className="relative flex justify-center mt-[60px] overflow-hidden bg-black">
                 <div className="relative flex p-2 items-center flex-col mb-3 w-[120px] h-[120px]">
                   <div className="relative shadow rounded-full w-[120px] h-[120px] align-middle mb-2">
                     <img
-                      src={image || ""}
+                      src={image || user}
                       alt="..."
                       className="shadow rounded-full w-[120px] h-[120px] align-middle border-2 border-green mb-2"
                     />
-                    <div className="absolute right-5 bottom-0">
+                    <div className="absolute right-5 bottom-0  bg-black">
                       <TesCheckedboxMarkedCircle
                         color="green"
                         width="25px"
@@ -66,7 +67,7 @@ function ProfileView({ loading, create, userDetails, pictureUpload, image, isLoa
                     onChange={handlePhotoUpload}
                     accept="image/png, image/jpeg ,image/jpg"
                   />
-                  <div className="flex flex-row colums-2">
+                  <div className="flex flex-row colums-2  bg-black">
                     <div className="">
                       <SvgTesMessageSquareEdit color="green"></SvgTesMessageSquareEdit>
                     </div>
@@ -95,19 +96,19 @@ function ProfileView({ loading, create, userDetails, pictureUpload, image, isLoa
               </span>
             </div> */}
             </div>
-            <div className="bg-white rounded-md mb-10 drop-shadow-md flex-wrap sm:flex-nowrap">
+            <div className="bg-black rounded-md mb-10 drop-shadow-md flex-wrap sm:flex-nowrap">
               <div className="flex flex-row items-start columns-2">
                 <div className="basis-0 grow-[1] p-2">
                   <div className="text-[14px] leading-4 text-green-600 font-normal">Address</div>
-                  <span className="text-[16px] leading-8">
+                  <span className="text-[16px] leading-8 text-white">
                     {userDetails?.tscFileNumber ? userDetails?.tscFileNumber : "-"}
                   </span>
                 </div>
               </div>
               <div className="flex flex-row items-start columns-3">
                 <div className="basis-0 grow-[1] p-2">
-                  <div className="text-[14px] leading-4 text-green-600 font-normal">Zip</div>
-                  <span className="text-[16px] leading-8">
+                  <div className="text-[14px]  leading-4 text-green-600 font-normal">Zip</div>
+                  <span className="text-[16px] leading-8 text-white">
                     {userDetails?.schoolOfPresentPosting
                       ? userDetails?.schoolOfPresentPosting
                       : "-"}
@@ -115,7 +116,7 @@ function ProfileView({ loading, create, userDetails, pictureUpload, image, isLoa
                 </div>
                 <div className="basis-0 grow-[1.2] p-2">
                   <div className="text-[14px] leading-4 text-green-600 font-normal">City</div>
-                  <span className="text-[16px] leading-8">
+                  <span className="text-[16px] leading-8 text-white">
                     {userDetails?.zone ? userDetails?.zone : "-"}
                   </span>
                 </div>
@@ -123,22 +124,22 @@ function ProfileView({ loading, create, userDetails, pictureUpload, image, isLoa
               <div className="flex flex-row items-start columns-3">
                 <div className="basis-0 grow-[1] p-2">
                   <div className="text-[14px] leading-4 text-green-600 font-normal">State</div>
-                  <span className="text-[16px] leading-8">
+                  <span className="text-[16px] leading-8 text-white">
                     {userDetails?.division ? userDetails?.division : "-"}
                   </span>
                 </div>
                 <div className="basis-0 grow-[1.2] p-2">
                   <div className="text-[14px] leading-4 text-green-600 font-normal">Country</div>
-                  <span className="text-[16px] leading-8">
+                  <span className="text-[16px] leading-8 text-white">
                     {userDetails?.nationality ? userDetails?.nationality : "-"}
                   </span>
                 </div>
               </div>
             </div>
-            <div className="flex flex-row items-start bg-white columns-2 rounded-md mb-10 drop-shadow-md flex-wrap sm:flex-nowrap">
+            <div className="flex flex-row items-start bg-black columns-2 rounded-md mb-10 drop-shadow-md flex-wrap sm:flex-nowrap">
               <div className="basis-0 grow-[1] p-2">
                 <div className="text-[14px] leading-4 text-green-600 font-normal">Phone Number</div>
-                <span className="text-[16px] leading-8">
+                <span className="text-[16px] leading-8 text-white">
                   {userDetails?.dateOfPresentSchoolPosting
                     ? userDetails?.dateOfPresentSchoolPosting
                     : "-"}
@@ -148,7 +149,7 @@ function ProfileView({ loading, create, userDetails, pictureUpload, image, isLoa
                 <div className="text-[14px] leading-4 text-green-600 font-normal">
                   Email Address
                 </div>
-                <span className="text-[16px] leading-8">
+                <span className="text-[16px] leading-8 text-white">
                   {userDetails?.email ? userDetails?.email : "-"}
                 </span>
               </div>
@@ -156,7 +157,9 @@ function ProfileView({ loading, create, userDetails, pictureUpload, image, isLoa
 
             <div className="relative flex flex-row  justify-end">
               <Button
-                onClick={() => setOpenModal("form")}
+                onClick={() => {
+                  setOpenModal("form");
+                }}
                 size="sm"
                 type="submit"
                 className="w-20 h-12"

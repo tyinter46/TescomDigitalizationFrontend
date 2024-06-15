@@ -20,7 +20,7 @@ function InputPin() {
       }}
       type="numeric"
       inputMode="number"
-      style={{ padding: "20px" }}
+      style={{ padding: "20px", marginTop: "300px", alignSelf: "center", marginLeft: "500px" }}
       inputStyle={{ borderColor: "green" }}
       inputFocusStyle={{ borderColor: "blue" }}
       onComplete={(value, index) => {
