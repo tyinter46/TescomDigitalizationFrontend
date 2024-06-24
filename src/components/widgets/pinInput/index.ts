@@ -1,1 +1,1 @@
-export { default as InputPin } from "./PinInput";
+export { default as InputPinContainer } from "./pinInputContainer";

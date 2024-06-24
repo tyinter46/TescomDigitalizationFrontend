@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/consistent-type-imports */
-import { Button, FormInput, Loader, InputPin } from "components/widgets";
+import { Button, FormInput, Loader, InputPinContainer } from "components/widgets";
 import { LOGIN } from "routes/CONSTANTS";
 import { Link } from "react-router-dom";
 import Navbar from "components/modules/navbar/Navbar";
@@ -22,12 +22,7 @@ interface Props {
 // const [isVerifying, setIsVerifying] = useState(false)
 
 const SignupView = ({ loading, isVerifying, formik }: Props) => {
-  return isVerifying ? (
-    <>
-      <Navbar></Navbar>
-      <InputPin />
-    </>
-  ) : (
+  return !isVerifying ? (
     <>
       <Navbar />
       <div className="sm: justify-self-center w-full mt-20 h-80 padding-20">
@@ -61,7 +56,7 @@ const SignupView = ({ loading, isVerifying, formik }: Props) => {
               onChange={formik.handleChange}
             />
             <FormInput
-            required
+              required
               size="lg"
               type="tel"
               id="phoneNumber"
@@ -73,7 +68,7 @@ const SignupView = ({ loading, isVerifying, formik }: Props) => {
               onChange={formik.handleChange}
             />
             <FormInput
-            required
+              required
               size="lg"
               type="tel"
               id="confirmPhoneNumber"
@@ -100,6 +95,11 @@ const SignupView = ({ loading, isVerifying, formik }: Props) => {
           </div>
         </form>
       </div>
+    </>
+  ) : (
+    <>
+      <Navbar></Navbar>
+      <InputPinContainer ogNumber={formik.values.ogNumber} />
     </>
   );
 };

@@ -10,7 +10,7 @@ const prod = {
 
 const dev = {
   REDIRECT_URL: "https://localhost:3000",
-  API_BASE_URL: "https:// localhost:5000/api"
+  API_BASE_URL: "https:// localhost:8001/api"
 };
 
 const getEnv = (): IURL => {

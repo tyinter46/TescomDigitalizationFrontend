@@ -5,7 +5,7 @@ import { Home, Signup, AboutUs, Login, Profile, Dashboard } from "pages";
 import { HOME, SIGNUP, ABOUT, LOGIN, ABOUT_ME, DASHBOARD } from "./CONSTANTS";
 
 import type { FC } from "react";
-// import { PublicRoute } from "components/gaurds";
+import { PublicRoute, ProtectedRoute } from "components/gaurds";
 
 const RouterConfig: FC = () => {
   return (
@@ -19,14 +19,14 @@ const RouterConfig: FC = () => {
         <Route path={SIGNUP} element={<Signup />} />
         <Route path={ABOUT_ME} element={<Profile />} />
         <Route path={DASHBOARD} element={<Dashboard />} />
-        {/* <Route path="/" element={<PublicRoute />} /> */}
+        <Route path="/" element={<PublicRoute />} />
         {/* Auth pages */}
 
         {/* <Route /> */}
 
-        {/* <Route path="/" element={<ProtectedRoute navigate={SIGNUP} />}> */}
+        <Route path="/" element={<ProtectedRoute navigate={SIGNUP} />}>
         {/* Protected routes should be placed in here */}
-        {/* </Route> */}
+        </Route> 
       </Routes>
     </div>
   );

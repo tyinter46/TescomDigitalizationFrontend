@@ -1,9 +1,9 @@
-import ConfirmAccountView from "./ConfirmAccountView";
+// import ConfirmAccountView from "./ConfirmAccountView";
 
-export const ConfirmAccountContainer = () => {
-  return (
-    <div>
-      <ConfirmAccountView></ConfirmAccountView>
-    </div>
-  );
-};
+// export const ConfirmAccountContainer = () => {
+//   return (
+//     <div>
+//       <ConfirmAccountView></ConfirmAccountView>
+//     </div>
+//   );
+// };

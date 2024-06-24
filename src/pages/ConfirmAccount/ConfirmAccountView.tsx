@@ -1,11 +1,11 @@
-import { InputPin } from "components";
+// import { InputPinContainer } from "components";
 
-const ConfirmAccountView = () => {
-  return (
-    <>
-      <InputPin />
-    </>
-  );
-};
+// const ConfirmAccountView = () => {
+//   return (
+//     <>
+//       <InputPinContainer />
+//     </>
+//   );
+// };
 
-export default ConfirmAccountView;
+// export default ConfirmAccountView;
