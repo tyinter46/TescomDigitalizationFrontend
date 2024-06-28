@@ -9,8 +9,8 @@ const prod = {
 };
 
 const dev = {
-  REDIRECT_URL: "https://localhost:3000",
-  API_BASE_URL: "https:// localhost:8001/api"
+  REDIRECT_URL: "http://localhost:3000",
+  API_BASE_URL: "http://localhost:8001/api"
 };
 
 const getEnv = (): IURL => {

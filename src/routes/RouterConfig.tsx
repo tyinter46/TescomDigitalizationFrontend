@@ -25,8 +25,8 @@ const RouterConfig: FC = () => {
         {/* <Route /> */}
 
         <Route path="/" element={<ProtectedRoute navigate={SIGNUP} />}>
-        {/* Protected routes should be placed in here */}
-        </Route> 
+          {/* Protected routes should be placed in here */}
+        </Route>
       </Routes>
     </div>
   );

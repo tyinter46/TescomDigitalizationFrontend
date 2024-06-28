@@ -1,10 +1,10 @@
 import * as Yup from "yup";
 import { useFormik } from "formik";
-import { useState } from "react";
+// import { useState } from "react";
 import { toast } from "react-toastify";
 
 import { Auth } from "components";
-import { signup } from "redux/slices/auth.slice";
+import { signup } from "../../redux/slices/auth.slice";
 import { useAppDispatch, useAppSelector } from "hooks";
 
 import SignupView from "./SignUpView";
@@ -12,8 +12,8 @@ import SignupView from "./SignUpView";
 export const SignupContainer = () => {
   const dispatch = useAppDispatch();
   const { isLoading } = useAppSelector((state) => state.auth);
-  const [isVerifying, setIsVerifying] = useState(false);
-  // const {isVerifying} = useAppSelector ((state=> state.auth))
+  // const [isVerifying, setIsVerifying] = useState(false);
+  let { isVerifying } = useAppSelector((state) => state.auth);
   const formik = useFormik({
     initialValues: {
       ogNumber: "",
@@ -37,12 +37,14 @@ export const SignupContainer = () => {
         .oneOf([Yup.ref("phoneNumber")], "Does not match with the phone number")
     }),
 
-    onSubmit: ({ ogNumber, password, phoneNumber }) => {
+    onSubmit: (details) => {
+      isVerifying = true;
+      console.log("is verifying", details);
       void dispatch(
         signup({
-          ogNumber,
-          password,
-          phoneNumber
+          ogNumber: details.ogNumber,
+          password: details.password,
+          phoneNumber: details.phoneNumber
         })
       )
         .unwrap()
@@ -53,8 +55,6 @@ export const SignupContainer = () => {
             );
           }, 5000);
         });
-      setIsVerifying(true);
-      console.log("is verifying");
     }
   });
 

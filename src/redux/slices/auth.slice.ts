@@ -2,10 +2,11 @@
 /* eslint-disable  @typescript-eslint/no-non-null-assertion */
 
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-
-import { toast } from "react-toastify";
 import { AuthService } from "services";
 import { formatErrorResponse } from "utils";
+
+import { toast } from "react-toastify";
+
 import { TESCOM_USER_DATA } from "services/CONSTANTS";
 
 const user = JSON.parse(localStorage.getItem(TESCOM_USER_DATA) as string);
@@ -270,3 +271,13 @@ const authSlice = createSlice({
 const { reducer } = authSlice;
 
 export default reducer;
+
+// Module not found: Error: Package path ./slices/auth.slice is not exported from package C:\Users\TEEWHY\Desktop\GITHUB REPOS\tescom_digitalization_fe\node_modules\redux (see exports field in C:\Users\TEEWHY\Desktop\GITHUB REPOS\tescom_digitalization_fe\node_modules\redux\package.json)
+// ERROR in ./src/components/widgets/pinInput/pinInputContainer.tsx 5:0-57
+// Module not found: Error: Package path ./slices/auth.slice is not exported from package C:\Users\TEEWHY\Desktop\GITHUB REPOS\tescom_digitalization_fe\node_modules\redux (see exports field in C:\Users\TEEWHY\Desktop\GITHUB REPOS\tescom_digitalization_fe\node_modules\redux\package.json)
+
+// ERROR in ./src/pages/Signup/SignupContainer.tsx 10:0-49
+// Module not found: Error: Package path ./slices/auth.slice is not exported from package C:\Users\TEEWHY\Desktop\GITHUB REPOS\tescom_digitalization_fe\node_modules\redux (see exports field in C:\Users\TEEWHY\Desktop\GITHUB REPOS\tescom_digitalization_fe\node_modules\redux\package.json)
+
+// ERROR in ./src/redux/store.ts 4:0-35
+// Module not found: Error: Package path ./slices is not exported from package C:\Users\TEEWHY\Desktop\GITHUB REPOS\tescom_digitalization_fe\node_modules\redux (see exports field in C:\Users\TEEWHY\Desktop\GITHUB REPOS\tescom_digitalization_fe\node_modules\redux\package.json)

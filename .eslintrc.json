@@ -31,11 +31,9 @@
     "@typescript-eslint/restrict-template-expressions": ["off"],
     "@typescript-eslint/no-non-null-assertion": ["off"],
     "@typescript-eslint/no-misused-promises": "error",
-    "@typescript-eslint/consistent-type-exports": "error",
-    "@typescript-eslint/consistent-type-imports": "error",
+    "@typescript-eslint/consistent-type-exports": 0,
     "@typescript-eslint/no-floating-promises": "error",
-    "@typescript-eslint/non-nullable-type-assertion-style": ["error"],
-
+    "@typescript-eslint/non-nullable-type-assertion-style": ["off"],
     "no-restricted-imports": [
       "error",
       {

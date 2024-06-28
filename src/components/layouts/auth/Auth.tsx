@@ -1,9 +1,10 @@
-import { Link } from "react-router-dom";
-import { HOME } from "routes/CONSTANTS";
+// import { Link } from "react-router-dom";
+// import { HOME } from "routes/CONSTANTS";
 import { TesSearch } from "components/icons";
 
 import { useState, type ReactNode } from "react";
-import { ogLogo } from "assets/logos";
+// import { ogLogo } from "assets/logos";
+import { ogLogoBackground } from "assets/backgrounds";
 
 interface Props {
   reverse?: boolean;
@@ -29,14 +30,14 @@ const AuthLayout = ({ children, reverse = false }: Props) => {
         reverse ? "flex-row-reverse" : "flex-row"
       } relative w-full min-h-screen lg:h-screen flex`}
     >
-      <div className="flex items-center justify-between absolute top-0 left-0 right-0 pt-10 px-5 md:px-10 lg:px-20 z-20">
-        <Link to={HOME}>
+      <div className="flex items-center justify-between absolute top-0  left-0 right-0 pt-10 px-5 md:px-10 lg:px-20 z-20">
+        {/* <Link to={HOME}>
           <img src={ogLogo} alt="logo" className="" />
-        </Link>
+        </Link> */}
       </div>
-      <div className="relative hidden lg:flex w-2/5 h-full items-center bg-green-100">
-        <div className="w-full h-full absolute pt-20 -left-10 xl:-left-20">
-          <img alt="" src={ogLogo} className="w-full h-full" />
+      <div className="relative hidden lg:flex w-2/5 h-full items-center bg-white">
+        <div className="w-full h-full absolute pt-20 -left-10 xl:-left-20 bg-white">
+          <img alt="OGLOGOBACKGRD" src={ogLogoBackground} className="W-full h-full" />
         </div>
       </div>
       <div className="relative w-full lg:w-3/5 h-full pt-20 px-5 md:px-10 lg:px-20 flex bg-white overflow-hidden">
@@ -58,8 +59,12 @@ const AuthLayout = ({ children, reverse = false }: Props) => {
           <button>
             <div
               className="flex items-center gap-2 px-1 py-px border-2 border-white rounded-lg cursor-pointer relative"
-              onMouseEnter={(e) => onHover(e, "Search")}
-              onMouseLeave={(e) => onHoverOver(e)}
+              onMouseEnter={(e) => {
+                onHover(e, "Search");
+              }}
+              onMouseLeave={(e) => {
+                onHoverOver(e);
+              }}
             >
               <TesSearch size={20} />
               {showTooltip && (

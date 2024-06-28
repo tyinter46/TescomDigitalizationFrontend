@@ -3,7 +3,7 @@ import { combineReducers } from "@reduxjs/toolkit";
 import auth from "./auth.slice";
 
 const rootReducer = combineReducers({
-  auth,
+  auth
 
   // settings,
   //   [meetingApi.reducerPath]: meetingApi.reducer,

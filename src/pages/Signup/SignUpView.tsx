@@ -1,12 +1,27 @@
 /* eslint-disable @typescript-eslint/consistent-type-imports */
-import { Button, FormInput, Loader, InputPinContainer } from "components/widgets";
+import { Button, FormInput, Loader } from "components/widgets";
 import { LOGIN } from "routes/CONSTANTS";
 import { Link } from "react-router-dom";
 import Navbar from "components/modules/navbar/Navbar";
 import { FormikProps } from "formik";
+import { useAppDispatch } from "hooks";
+import { confirmAccount } from "../../redux/slices/auth.slice";
+import { toast } from "react-toastify";
+
+// import InputPin from "components/widgets/pinInput/PinInput";
+
 // import { useState } from "react";
 
 // import { Landing } from "components/layouts";
+
+import PinInput from "react-pin-input";
+// import { FormInput } from "../input";
+
+// interface Props {
+//   onComplete: (value: any, ogNumber: any) => void;
+// }
+
+// const [input, setInput] = useState([]);
 
 interface Props {
   loading: boolean;
@@ -22,6 +37,24 @@ interface Props {
 // const [isVerifying, setIsVerifying] = useState(false)
 
 const SignupView = ({ loading, isVerifying, formik }: Props) => {
+  const onComplete = (value: any, ogNumber: any) => {
+    const dispatch = useAppDispatch();
+    // const {isLoading} = useAppSelector ((state)=> state.auth)
+
+    void dispatch(
+      confirmAccount({
+        code: value,
+        ogNumber: ogNumber
+      })
+    )
+      .unwrap()
+      .then((res) => {
+        setTimeout(() => {
+          toast.success(` ${res.ogNumber}You have been successfully verified kindly login`);
+        }, 5000);
+      });
+  };
+
   return !isVerifying ? (
     <>
       <Navbar />
@@ -48,7 +81,7 @@ const SignupView = ({ loading, isVerifying, formik }: Props) => {
               type="password"
               id="password"
               name="password"
-              maxLength={10}
+              maxLength={15}
               label="Create password"
               placeholder="Enter password"
               errors={formik.errors.password}
@@ -99,7 +132,28 @@ const SignupView = ({ loading, isVerifying, formik }: Props) => {
   ) : (
     <>
       <Navbar></Navbar>
-      <InputPinContainer ogNumber={formik.values.ogNumber} />
+      {/* <InputPinContainer onComplete ={oncomplete()} /> */}
+      {/* <InputPinContainer onComplete={onComplete} /> */}
+      <PinInput
+        length={6}
+        initialValue=""
+        secret={false}
+        // secretDelay={100}
+        onChange={(value, index) => {
+          console.log(value, index);
+        }}
+        type="numeric"
+        inputMode="number"
+        style={{ padding: "20px", marginTop: "300px", alignSelf: "center", marginLeft: "500px" }}
+        inputStyle={{ borderColor: "green" }}
+        inputFocusStyle={{ borderColor: "blue" }}
+        onComplete={(value) => {
+          console.log(value, formik.values.ogNumber);
+          onComplete(value, formik.values.ogNumber);
+        }}
+        autoSelect={true}
+        regexCriteria={/^[ A-Za-z0-9_@./#&+-]*$/}
+      />
     </>
   );
 };

@@ -20,4 +20,3 @@ export const PUBLIC_REQUEST_KEY = "public-request";
 
 export const RESPONSE_SUCCESS = "SUCCESS";
 export const RESPONSE_ERROR = "FAILURE";
-
