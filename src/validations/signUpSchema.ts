@@ -1,18 +1,26 @@
-const validation = (values: { ogNumber: string; phoneNumber: string; password: string }) => {
+const validation = (values: {
+  ogNumber: string;
+  phoneNumber: string;
+  password: string;
+  confirmPhoneNumber: string;
+}) => {
   const errors = {
     ogNumber: "",
     phoneNumber: "",
-    password: ""
+    password: "",
+    confirmPhoneNumber: ""
   };
   if (!values.ogNumber) {
     errors.ogNumber = "OGNumber is required";
   } else if (values.ogNumber.length < 7) {
     errors.ogNumber =
-      "Invalid OG-Number! Kindly enter a valid OG-Number and ensure you add 0G before the numbers";
+      "Invalid OG-Number! Kindly enter a valid OG-Number and ensure you add 0G before the numbers e.g OG12345";
   }
 
   if (!values.phoneNumber) {
-    errors.phoneNumber = "Password is required";
+    errors.phoneNumber = "PhoneNumber is required";
+  } else if (!values.confirmPhoneNumber) {
+    errors.confirmPhoneNumber = "Confirm Phone Number is required";
   } else if (
     !/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/.test(values.password)
   ) {

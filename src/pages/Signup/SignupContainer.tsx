@@ -2,15 +2,18 @@ import * as Yup from "yup";
 import { useFormik } from "formik";
 // import { useState } from "react";
 import { toast } from "react-toastify";
+// import { useNavigate } from "react-router-dom";
 
 import { Auth } from "components";
 import { signup } from "../../redux/slices/auth.slice";
 import { useAppDispatch, useAppSelector } from "hooks";
 
 import SignupView from "./SignUpView";
+import { useEffect } from "react";
 
 export const SignupContainer = () => {
   const dispatch = useAppDispatch();
+  useEffect(() => {}, [dispatch]);
   const { isLoading } = useAppSelector((state) => state.auth);
   // const [isVerifying, setIsVerifying] = useState(false);
   let { isVerifying } = useAppSelector((state) => state.auth);
@@ -33,18 +36,20 @@ export const SignupContainer = () => {
         .required("Phone Number is Required")
         .min(17, "Phone Number Length Incomplete"),
       confirmPhoneNumber: Yup.string()
-        .required("Confirm Phone Number is Required")
         .oneOf([Yup.ref("phoneNumber")], "Does not match with the phone number")
+        .required("Confirm Phone Number is Required")
     }),
 
     onSubmit: (details) => {
       isVerifying = true;
+
       console.log("is verifying", details);
       void dispatch(
         signup({
           ogNumber: details.ogNumber,
           password: details.password,
-          phoneNumber: details.phoneNumber
+          phoneNumber: details.phoneNumber,
+          confirmPhoneNumber: details.confirmPhoneNumber
         })
       )
         .unwrap()
@@ -53,6 +58,12 @@ export const SignupContainer = () => {
             toast.success(
               `Verification code has been sent to this phone number "${res.phoneNumber}", kindly input the code for verification`
             );
+          }, 5000);
+        })
+        .catch((error: any) => {
+          console.log(error.message);
+          setTimeout(() => {
+            toast.error(` "${error.message}",  `);
           }, 5000);
         });
     }

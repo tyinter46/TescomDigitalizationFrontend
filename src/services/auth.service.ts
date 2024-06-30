@@ -68,10 +68,12 @@ export const loginSuccess = async () => {
 };
 
 export const register = async (details: {
+  phoneNumber: string;
   ogNumber: string;
   password: string;
-  phoneNumber: string;
+  confirmPhoneNumber: string;
 }) => {
+  console.log(details.confirmPhoneNumber);
   const response = await axios.post(`${env.API_BASE_URL}/${SIGNUP}`, details);
   return response.data;
 };
@@ -82,6 +84,13 @@ export const confirmAccount = async (code: string, ogNumber: string) => {
     ogNumber
   });
   return respone.data;
+};
+
+export const resendConfirmationCode = async (ogNumber: string) => {
+  const response = await axios.patch(env.API_BASE_URL + `/auth/local/resendConfirmAccountToken`, {
+    ogNumber
+  });
+  return response.data;
 };
 
 export const logout = async () => {

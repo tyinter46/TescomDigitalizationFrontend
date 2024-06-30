@@ -6,6 +6,8 @@ import { store } from "./redux/store";
 import RouterConfig from "./routes/RouterConfig";
 
 import "./styles/tailwind.css";
+import "react-phone-input-2/lib/style.css";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
@@ -14,7 +16,17 @@ function App() {
         <BrowserRouter>
           <RouterConfig />
         </BrowserRouter>
-        <ToastContainer />
+        <ToastContainer
+        // position="bottom-right"
+        // autoClose={5000}
+        // hideProgressBar={false}
+        // newestOnTop={false}
+        // closeOnClick
+        // rtl={false}
+        // pauseOnFocusLoss
+        // draggable
+        // pauseOnHover
+        />
       </Provider>
     </AnimatePresence>
   );

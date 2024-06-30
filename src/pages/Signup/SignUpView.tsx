@@ -1,27 +1,13 @@
 /* eslint-disable @typescript-eslint/consistent-type-imports */
 import { Button, FormInput, Loader } from "components/widgets";
 import { LOGIN } from "routes/CONSTANTS";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Navbar from "components/modules/navbar/Navbar";
 import { FormikProps } from "formik";
 import { useAppDispatch } from "hooks";
-import { confirmAccount } from "../../redux/slices/auth.slice";
+import { confirmAccount, resendConfirmAccountTokenSlice } from "../../redux/slices/auth.slice";
 import { toast } from "react-toastify";
-
-// import InputPin from "components/widgets/pinInput/PinInput";
-
-// import { useState } from "react";
-
-// import { Landing } from "components/layouts";
-
 import PinInput from "react-pin-input";
-// import { FormInput } from "../input";
-
-// interface Props {
-//   onComplete: (value: any, ogNumber: any) => void;
-// }
-
-// const [input, setInput] = useState([]);
 
 interface Props {
   loading: boolean;
@@ -34,31 +20,37 @@ interface Props {
   }>;
 }
 
-// const [isVerifying, setIsVerifying] = useState(false)
+const SignupView: React.FC<Props> = ({ loading, isVerifying, formik }) => {
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
-const SignupView = ({ loading, isVerifying, formik }: Props) => {
-  const onComplete = (value: any, ogNumber: any) => {
-    const dispatch = useAppDispatch();
-    // const {isLoading} = useAppSelector ((state)=> state.auth)
-
-    void dispatch(
-      confirmAccount({
-        code: value,
-        ogNumber: ogNumber
-      })
-    )
+  const resendCode = (ogNumber: string) => {
+    dispatch(resendConfirmAccountTokenSlice({ ogNumber }))
       .unwrap()
       .then((res) => {
-        setTimeout(() => {
-          toast.success(` ${res.ogNumber}You have been successfully verified kindly login`);
-        }, 5000);
+        toast.success(` ${res.firstName}, code has been resent to ${res.phoneNumber}`);
+      })
+      .catch((error) => {
+        toast.error(`${error.message}`);
+      });
+  };
+
+  const onComplete = (value: string, ogNumber: string) => {
+    dispatch(confirmAccount({ code: value, ogNumber }))
+      .unwrap()
+      .then((res) => {
+        toast.success(` ${res.ogNumber} has been successfully verified, kindly login`);
+        navigate(LOGIN);
+      })
+      .catch((error) => {
+        toast.error(`${error.message}`);
       });
   };
 
   return !isVerifying ? (
     <>
       <Navbar />
-      <div className="sm: justify-self-center w-full mt-20 h-80 padding-20">
+      <div className="sm: justify-self-center w-full mt-10 h-80 padding-20">
         <form onSubmit={formik.handleSubmit} className="space-y-5">
           <div className="gap-4">
             <label htmlFor="ogNumber" className="block text-lg text-gray-200"></label>
@@ -95,7 +87,6 @@ const SignupView = ({ loading, isVerifying, formik }: Props) => {
               id="phoneNumber"
               name="phoneNumber"
               label="Phone Number"
-              // placeholder="+234 80 123 456 7"
               errors={formik.errors.phoneNumber}
               touched={formik.touched.phoneNumber}
               onChange={formik.handleChange}
@@ -107,7 +98,6 @@ const SignupView = ({ loading, isVerifying, formik }: Props) => {
               id="confirmPhoneNumber"
               name="confirmPhoneNumber"
               label="Confirm Phone Number"
-              // placeholder="Confirm Phone Number"
               errors={formik.errors.confirmPhoneNumber}
               touched={formik.touched.confirmPhoneNumber}
               onChange={formik.handleChange}
@@ -131,29 +121,39 @@ const SignupView = ({ loading, isVerifying, formik }: Props) => {
     </>
   ) : (
     <>
-      <Navbar></Navbar>
-      {/* <InputPinContainer onComplete ={oncomplete()} /> */}
-      {/* <InputPinContainer onComplete={onComplete} /> */}
-      <PinInput
-        length={6}
-        initialValue=""
-        secret={false}
-        // secretDelay={100}
-        onChange={(value, index) => {
-          console.log(value, index);
-        }}
-        type="numeric"
-        inputMode="number"
-        style={{ padding: "20px", marginTop: "300px", alignSelf: "center", marginLeft: "500px" }}
-        inputStyle={{ borderColor: "green" }}
-        inputFocusStyle={{ borderColor: "blue" }}
-        onComplete={(value) => {
-          console.log(value, formik.values.ogNumber);
-          onComplete(value, formik.values.ogNumber);
-        }}
-        autoSelect={true}
-        regexCriteria={/^[ A-Za-z0-9_@./#&+-]*$/}
-      />
+      <div className="mt-[180px]">
+        <div className="ml-[120px]">
+          <PinInput
+            length={6}
+            initialValue=""
+            secret={false}
+            onChange={(value, index) => {
+              console.log(value, index);
+            }}
+            type="numeric"
+            inputMode="number"
+            style={{ padding: "20px", marginTop: "100px", alignSelf: "center", border: 5 }}
+            inputStyle={{ borderColor: "green" }}
+            inputFocusStyle={{ borderColor: "blue" }}
+            onComplete={(value) => {
+              console.log(value, formik.values.ogNumber);
+              onComplete(value, formik.values.ogNumber);
+            }}
+            autoSelect={true}
+            regexCriteria={/^[ A-Za-z0-9_@./#&+-]*$/}
+          />
+        </div>
+        <p className="text-black ml-[160px]">
+          Didn't receive code? click
+          <span
+            className="text-green cursor-pointer"
+            onClick={() => resendCode(formik.values.ogNumber)}
+          >
+            <strong> here </strong>
+          </span>
+          to resend
+        </p>
+      </div>
     </>
   );
 };

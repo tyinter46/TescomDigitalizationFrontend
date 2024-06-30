@@ -17,11 +17,13 @@ export const signup = createAsyncThunk(
     {
       ogNumber,
       password,
-      phoneNumber
+      phoneNumber,
+      confirmPhoneNumber
     }: {
       ogNumber: string;
       password: string;
       phoneNumber: string;
+      confirmPhoneNumber: string;
     },
     thunkAPI
   ) => {
@@ -29,7 +31,8 @@ export const signup = createAsyncThunk(
       const { MESSAGE, DATA } = await AuthService.register({
         ogNumber,
         password,
-        phoneNumber
+        phoneNumber,
+        confirmPhoneNumber
       });
       toast.success(MESSAGE);
       return { userId: DATA.id, phoneNumber: DATA.phoneNumber, ogNumber: DATA.ogNumber };
@@ -89,6 +92,21 @@ export const confirmAccount = createAsyncThunk(
       return { userId: DATA.id, ogNumber: DATA.ogNumber, firstName: DATA.firstName };
     } catch (error) {
       const message = formatErrorResponse(error);
+      toast.error(message);
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+export const resendConfirmAccountTokenSlice = createAsyncThunk(
+  "auth/local/resendConfirmAccountToken",
+  async ({ ogNumber }: { ogNumber: string }, thunkAPI) => {
+    try {
+      const { MESSAGE, DATA } = await AuthService.resendConfirmationCode(ogNumber);
+      toast.success(MESSAGE);
+      return { phoneNumber: DATA.phoneNumber, firstName: DATA.firstName };
+    } catch (error: any) {
+      const message = formatErrorResponse(error.message);
       toast.error(message);
       return thunkAPI.rejectWithValue(message);
     }
@@ -188,17 +206,15 @@ const authSlice = createSlice({
 
     // confirm account actions
     builder.addCase(confirmAccount.pending, (state) => {
-      state.isLoggedIn = false;
       state.isLoading = true;
       state.isVerifying = true;
     });
+
     builder.addCase(confirmAccount.fulfilled, (state) => {
       state.isVerifying = false;
-      state.isLoggedIn = false;
       state.isLoading = false;
     });
     builder.addCase(confirmAccount.rejected, (state) => {
-      state.isLoggedIn = false;
       state.isVerifying = true;
       state.isLoading = false;
     });
