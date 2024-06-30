@@ -19,9 +19,9 @@ const LoginView = ({ loading, formik }: Props) => {
   return (
     <>
       <Navbar />
-      <div className="sm: justify-self-center w-full mt-20 h-80">
-        <form className="space-y-3">
-          <div className="gap-4">
+      <div className="sm: justify-self-center w-full mt-40 h-80 ">
+        <form className="space-y-3 bg-black-100 p-8 rounded-lg shadow-lg h-[580px] w-full -mt-[97px] ">
+          <div className="gap-8 mt-20">
             <label htmlFor="ogNumber" className="block text-lg text-gray-200"></label>
 
             <FormInput
@@ -37,6 +37,7 @@ const LoginView = ({ loading, formik }: Props) => {
               onChange={() => {
                 console.log("hi");
               }}
+              className="text-black bg-white"
             />
             <FormInput
               required
@@ -51,15 +52,16 @@ const LoginView = ({ loading, formik }: Props) => {
               onChange={() => {
                 console.log("hi");
               }}
+              className="text-black bg-white"
             />
             <Button
               size="lg"
               type="submit"
-              className="w-full text-black flex items-center bg-green text-black justify-center mt-4 hover:bg-[#50c878] hover:text-white"
+              className="w-full text-white flex items-center bg-green justify-center mt-4 hover:bg-[#50c878] hover:text-black"
             >
               {loading ? <Loader /> : "Login Account"}
             </Button>
-            <p className="my-5 text-lg text-gray-200 text-center">
+            <p className="my-5 text-lg text-yellow text-center">
               Don't have an account?
               <Link to={SIGNUP}>
                 <span className="text-primary"> Sign up</span>

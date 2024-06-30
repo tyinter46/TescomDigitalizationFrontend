@@ -50,15 +50,15 @@ const SignupView: React.FC<Props> = ({ loading, isVerifying, formik }) => {
   return !isVerifying ? (
     <>
       <Navbar />
-      <div className="sm: justify-self-center w-full mt-10 h-80 padding-20">
+      <div className="sm: justify-self-center w-full mt-10 h-full padding-20 bg-black-100 p-8 rounded-lg shadow-lg">
         <form onSubmit={formik.handleSubmit} className="space-y-5">
           <div className="gap-4">
-            <label htmlFor="ogNumber" className="block text-lg text-gray-200"></label>
+            <label htmlFor="ogNumber" className="block text-lg text-yellow-300"></label>
             <FormInput
               required
               size="lg"
               type="text"
-              className="text-9xl"
+              className="text-white text-lg bg-gray"
               id="ogNumber"
               name="ogNumber"
               label="Your OG-Number"
@@ -79,6 +79,7 @@ const SignupView: React.FC<Props> = ({ loading, isVerifying, formik }) => {
               errors={formik.errors.password}
               touched={formik.touched.password}
               onChange={formik.handleChange}
+              className="text-white text-lg bg-gray"
             />
             <FormInput
               required
@@ -90,6 +91,7 @@ const SignupView: React.FC<Props> = ({ loading, isVerifying, formik }) => {
               errors={formik.errors.phoneNumber}
               touched={formik.touched.phoneNumber}
               onChange={formik.handleChange}
+              className="text-white text-lg bg-gray"
             />
             <FormInput
               required
@@ -101,15 +103,16 @@ const SignupView: React.FC<Props> = ({ loading, isVerifying, formik }) => {
               errors={formik.errors.confirmPhoneNumber}
               touched={formik.touched.confirmPhoneNumber}
               onChange={formik.handleChange}
+              className="text-white text-lg bg-gray"
             />
             <Button
               size="lg"
               type="submit"
-              className="w-full text-black flex items-center bg-green text-black justify-center mt-4 hover:bg-[#50c878] hover:text-white"
+              className="w-full text-black flex items-center bg-green justify-center mt-4 hover:bg-[#50c878] hover:text-white"
             >
               {loading ? <Loader /> : "Register Account"}
             </Button>
-            <p className="my-5 text-lg text-gray-200 text-center">
+            <p className="my-5 text-lg text-yellow-300 text-center">
               Already have an account?
               <Link to={LOGIN}>
                 <span className="text-primary"> Sign In</span>
