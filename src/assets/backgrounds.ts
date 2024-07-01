@@ -4,4 +4,4 @@ const BACKGROUNDS = `${IMG_PATH}/backgrounds`;
 
 export const ogLogoBackground = `${BACKGROUNDS}/ogunLogo.png`;
 export const patternBg = `${BACKGROUNDS}/patternBg.png`;
-export const greenAdire = `${BACKGROUNDS}/greenAdire.png`;
+export const adireBg = `${BACKGROUNDS}/adireBg.png`;

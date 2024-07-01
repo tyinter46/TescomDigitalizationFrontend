@@ -14,7 +14,7 @@ const Navbar = () => {
       className={
         location.pathname === "/"
           ? "flex flex-row items-center top-0 absolute w-3/4 right-0 h-16 justify-between opacity-100 bg-inherit border-b-2 border-b-primary"
-          : "flex flex-row items-center top-0 absolute w-full right-0 h-16 justify-between opacity-100 bg-green border-b-2 border-b-primary"
+          : "flex flex-row items-center top-0 absolute w-full right-0 h-16 justify-between opacity-90 bg-green border-b-2 border-b-primary"
       }
     >
       <div className="flex flex-row justify-start">

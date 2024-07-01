@@ -12,6 +12,7 @@ const FormInput = ({ id, label, errors, touched, required, ...rest }: Props) => 
 
   return (
     <div className="space-y-2">
+     
       {label !== undefined && (
         <label htmlFor={id} className="block text-lg text-gray-200">
           {label} {required ? "*" : ""}
@@ -26,6 +27,7 @@ const FormInput = ({ id, label, errors, touched, required, ...rest }: Props) => 
             : " text-lg maxLength-10"
         } w-full`}
       />
+       
       {error && <p className="text-red text-base">{errors}</p>}
     </div>
   );

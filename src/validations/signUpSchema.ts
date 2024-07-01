@@ -15,6 +15,9 @@ const validation = (values: {
   } else if (values.ogNumber.length < 7) {
     errors.ogNumber =
       "Invalid OG-Number! Kindly enter a valid OG-Number and ensure you add 0G before the numbers e.g OG12345";
+  } else if (values.ogNumber.length > 7) {
+    errors.ogNumber =
+      "OG-Numbers should not be more than 7 characters e.g OG12345";
   }
 
   if (!values.phoneNumber) {

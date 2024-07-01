@@ -25,7 +25,7 @@ export const SignupContainer = () => {
       confirmPhoneNumber: ""
     },
     validationSchema: Yup.object().shape({
-      ogNumber: Yup.string().required("OG-Number is required"),
+      ogNumber: Yup.string().required("OG-Number is required.").min(4, "OG-Number should be at least 4 characters").max(7, "OG-Number should not be more than 7 characters"),
       password: Yup.string()
         .required("Password is required")
         .matches(
@@ -41,9 +41,7 @@ export const SignupContainer = () => {
     }),
 
     onSubmit: (details) => {
-      isVerifying = true;
-
-      console.log("is verifying", details);
+          console.log("is verifying", details);
       void dispatch(
         signup({
           ogNumber: details.ogNumber,
@@ -59,6 +57,7 @@ export const SignupContainer = () => {
               `Verification code has been sent to this phone number "${res.phoneNumber}", kindly input the code for verification`
             );
           }, 5000);
+          isVerifying = true;
         })
         .catch((error: any) => {
           console.log(error.message);
@@ -66,7 +65,11 @@ export const SignupContainer = () => {
             toast.error(` "${error.message}",  `);
           }, 5000);
         });
+        isVerifying = false
     }
+
+    
+   
   });
 
   return (
