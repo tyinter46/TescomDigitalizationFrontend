@@ -1,34 +1,41 @@
 import PinInput from "react-pin-input";
 import Navbar from "components/modules/navbar/Navbar";
-import { FormInput } from "components";
-import { FormikProps } from "formik";
-import { useAppDispatch} from "hooks";
+// import { FormInput } from "components";
+// import { FormikProps } from "formik";
+import { useAppDispatch, useAppSelector} from "hooks";
 import { toast } from "react-toastify";
 import { confirmAccount} from "../../redux/slices/auth.slice";
 import { LOGIN } from "routes/CONSTANTS";
 import { useNavigate } from "react-router-dom";
+import { RootState } from "redux/store";
+import { FormikProps } from "formik";
+import { FormInput } from "components";
+import { ReactNode } from "react";
 
 
 interface Props {
     loading: boolean;
     formik: FormikProps<{
       ogNumber: string;
-    }>
+    }>,
+    children?: ReactNode;
 }
 
 
-const ConfirmAccountView: React.FC<Props> = ({ formik }: Props) => {
+const ConfirmAccountView: React.FC<Props> = ({ loading, formik}) => {
   const dispatch = useAppDispatch ()
+  const ogNumber = useAppSelector((state: RootState)=> state.ogNumber.ogNumber)
+
   const navigate = useNavigate ()
 
-    const onComplete = (value: string, ogNumber: string) => {
+    const onComplete = (value: string) => {
         dispatch(confirmAccount({ code: value, ogNumber }))
           .unwrap()
           .then((res) => {
             toast.success(` ${res.ogNumber} has been successfully verified, kindly login`);
             navigate(LOGIN);
           })
-          .catch((error) => {
+          .catch((error: any) => {
             toast.error(`${error.message}`);
           });
       };
@@ -66,8 +73,8 @@ const ConfirmAccountView: React.FC<Props> = ({ formik }: Props) => {
             inputStyle={{ borderColor: "green" }}
             inputFocusStyle={{ borderColor: "blue" }}
             onComplete={(value) => {
-              console.log(value, formik.values.ogNumber);
-              onComplete(value, formik.values.ogNumber);
+              console.log(value, ogNumber);
+              onComplete(value);
             }}
             autoSelect={true}
             regexCriteria={/^[ A-Za-z0-9_@./#&+-]*$/}

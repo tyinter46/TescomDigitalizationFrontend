@@ -36,7 +36,7 @@ const Input = ({ end, size = "md", className = "", ...props }: Props) => {
           {...props}
           type={"text"}
           className="w-full h-full bg-white text-black text-lg"
-          onChange ={ props.onChange}
+          // onChange ={console.log(value: string)}
           
         />
         <div

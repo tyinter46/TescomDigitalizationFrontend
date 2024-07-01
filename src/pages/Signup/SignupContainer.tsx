@@ -2,21 +2,24 @@ import * as Yup from "yup";
 import { useFormik } from "formik";
 // import { useState } from "react";
 import { toast } from "react-toastify";
+import { setOgNumber } from "../../redux/slices/ogNumber.slice";
 // import { useNavigate } from "react-router-dom";
-
+import { CONFIRM_ACCOUNT } from "routes/CONSTANTS";
 import { Auth } from "components";
 import { signup } from "../../redux/slices/auth.slice";
 import { useAppDispatch, useAppSelector } from "hooks";
 
 import SignupView from "./SignUpView";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const SignupContainer = () => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate ()
   useEffect(() => {}, [dispatch]);
   const { isLoading } = useAppSelector((state) => state.auth);
   // const [isVerifying, setIsVerifying] = useState(false);
-  let { isVerifying } = useAppSelector((state) => state.auth);
+  // let { isVerifying } = useAppSelector((state) => state.auth);
   const formik = useFormik({
     initialValues: {
       ogNumber: "",
@@ -25,7 +28,10 @@ export const SignupContainer = () => {
       confirmPhoneNumber: ""
     },
     validationSchema: Yup.object().shape({
-      ogNumber: Yup.string().required("OG-Number is required.").min(4, "OG-Number should be at least 4 characters").max(7, "OG-Number should not be more than 7 characters"),
+      ogNumber: Yup.string()
+        .required("OG-Number is required.")
+        .min(4, "OG-Number should be at least 4 characters")
+        .max(7, "OG-Number should not be more than 7 characters"),
       password: Yup.string()
         .required("Password is required")
         .matches(
@@ -41,7 +47,8 @@ export const SignupContainer = () => {
     }),
 
     onSubmit: (details) => {
-          console.log("is verifying", details);
+      console.log("is verifying", details);
+      void dispatch(setOgNumber(String(details.ogNumber)));
       void dispatch(
         signup({
           ogNumber: details.ogNumber,
@@ -57,7 +64,7 @@ export const SignupContainer = () => {
               `Verification code has been sent to this phone number "${res.phoneNumber}", kindly input the code for verification`
             );
           }, 5000);
-          isVerifying = true;
+          // isVerifying = true;
         })
         .catch((error: any) => {
           console.log(error.message);
@@ -65,16 +72,13 @@ export const SignupContainer = () => {
             toast.error(` "${error.message}",  `);
           }, 5000);
         });
-        isVerifying = false
+       navigate(CONFIRM_ACCOUNT)
     }
-
-    
-   
   });
 
   return (
     <Auth>
-      <SignupView formik={formik} loading={isLoading} isVerifying={isVerifying} />
+      <SignupView formik={formik} loading={isLoading} />
     </Auth>
   );
 };
