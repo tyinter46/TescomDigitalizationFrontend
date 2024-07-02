@@ -1,37 +1,10 @@
-// import { NavLink } from "react-router-dom";
-// import { ABOUT } from "routes/CONSTANTS";
-
-// const AboutUsHome = () => {
-//   return (
-//     <div className="flex flex-col gap-4 h-80 w-80 bg-sky mt-60">
-//       <div className="">
-//         <h4>About Us</h4>
-//       </div>
-//       <div className="text-wrap gap-6">
-//         <p>
-//           {" "}
-//           Our innovative platform is designed to empower Ogun State <br />
-//           Teaching Service Commission with a comprehensive solution{" "}
-//         </p>
-//         <p> for efficient staff management</p>
-
-//         <strong>
-//           {" "}
-//           <NavLink to={ABOUT}> Show more</NavLink>
-//         </strong>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default AboutUsHome;
-import LeftContent from "./LeftContent";
-import RightContent from "./RightContent";
+// import LeftContent from "./LeftContent";
+// import RightContent from "./RightContent";
 import { Button } from "components/widgets";
 import { SIGNUP } from "routes/CONSTANTS";
 const AboutUsHome = () => {
   return (
-    <div className="flex flex-row h-screen w-[2700px]">
+    <div className="flex flex-row h-screen w-[2900px]">
       {/* <LeftContent /> */}
       <div className="flex flex-col w-1/2 p-10 bg-white text-black overflow-auto">
         <section className="mb-8">

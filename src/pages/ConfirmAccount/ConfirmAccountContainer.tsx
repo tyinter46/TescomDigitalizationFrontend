@@ -1,10 +1,13 @@
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import ConfirmAccountView from "./ConfirmAccountView";
-import { useAppSelector } from "hooks";
+import { useAppSelector, useAppDispatch } from "hooks";
+import { resendConfirmAccountTokenSlice } from  "../../redux/slices/auth.slice";
+import { toast } from "react-toastify";
 
 
 export const ConfirmAccountContainer = () => {
+    const dispatch = useAppDispatch()
    const {isLoading } = useAppSelector ((state)=> state.auth)
    const formik = useFormik({
 
@@ -20,7 +23,16 @@ export const ConfirmAccountContainer = () => {
          }),
 
 
-         onSubmit: () => {}
+         onSubmit: (details) => {
+          dispatch(resendConfirmAccountTokenSlice({ ogNumber: details.ogNumber }))
+          .unwrap()
+          .then((res) => {
+            toast.success(`${res.firstName}, code has been resent to ${res.phoneNumber}`);
+          })
+          .catch((error) => {
+            toast.error(`${error.message}`);
+          });
+         }
         })
     
   return (

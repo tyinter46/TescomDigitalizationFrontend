@@ -21,15 +21,6 @@ interface Props {
 }
 
 const SignupView: React.FC<Props> = ({ loading, formik }) => {
-  // const dispatch = useAppDispatch();
-  // const navigate = useNavigate();
-
-
-    //  void dispatch (
-    //        setOgNumber(String(ogNumber))
-    //       )
-    //   void dispatch(
-
 
   // const handleOgNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
   //   const value = e.target.value.replace(/^OG/, ""); // Remove existing "OG" if any

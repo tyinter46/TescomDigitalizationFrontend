@@ -3,7 +3,6 @@ import { useFormik } from "formik";
 // import { useState } from "react";
 import { toast } from "react-toastify";
 import { setOgNumber } from "../../redux/slices/ogNumber.slice";
-// import { useNavigate } from "react-router-dom";
 import { CONFIRM_ACCOUNT } from "routes/CONSTANTS";
 import { Auth } from "components";
 import { signup } from "../../redux/slices/auth.slice";
@@ -68,6 +67,7 @@ export const SignupContainer = () => {
         })
         .catch((error: any) => {
           console.log(error.message);
+          window.location.reload
           setTimeout(() => {
             toast.error(` "${error.message}",  `);
           }, 5000);
