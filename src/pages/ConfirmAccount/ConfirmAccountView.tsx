@@ -3,14 +3,13 @@ import Navbar from "components/modules/navbar/Navbar";
 import { useAppDispatch, useAppSelector } from "hooks";
 import { toast } from "react-toastify";
 import { confirmAccount, resendConfirmAccountTokenSlice } from "../../redux/slices/auth.slice";
-import { LOGIN } from "routes/CONSTANTS";
+import { LOGIN, CONFIRM_ACCOUNT} from "routes/CONSTANTS";
 import { useNavigate } from "react-router-dom";
 import { RootState } from "redux/store";
 import { FormikProps } from "formik";
 import { FormInput } from "components";
 import { ReactNode } from "react";
-import {Button, Loader} from "components";
-
+import { Button, Loader } from "components";
 
 interface Props {
   loading: boolean;
@@ -29,7 +28,7 @@ const ConfirmAccountView: React.FC<Props> = ({ loading, formik }) => {
 
   const onComplete = (value: string) => {
     let assignedOgNumber: string;
-    if (ogNumber === "") {
+    if (ogNumber == "") {
       assignedOgNumber = existingAccountOgNumber;
     } else {
       assignedOgNumber = ogNumber;
@@ -49,14 +48,17 @@ const ConfirmAccountView: React.FC<Props> = ({ loading, formik }) => {
     dispatch(resendConfirmAccountTokenSlice({ ogNumber }))
       .unwrap()
       .then((res) => {
+        // const phoneNumber = res.phoneNumber
+        // phoneNumber.toString().replace()
         toast.success(`${res.firstName}, code has been resent to ${res.phoneNumber}`);
+        // navigate(CONFIRM_ACCOUNT)
       })
       .catch((error) => {
         toast.error(`${error.message}`);
       });
   };
 
-  if (ogNumber === "") {
+  if (ogNumber == "") {
     return isLoading ? (
       <LoadingScreen />
     ) : (
@@ -80,17 +82,19 @@ const ConfirmAccountView: React.FC<Props> = ({ loading, formik }) => {
                 onChange={formik.handleChange}
               />
             </div>
-      
+
+            <div className="mt-10">
+              <Button
+                size="lg"
+                type="submit"
+                className="w-full text-black flex items-center bg-green justify-center mt-4 hover:bg-[#50c878] hover:text-white"
+              >
+                {loading ? <Loader /> : "Send Code"}
+              </Button>
+            </div>
+          </form>
           <div className="mt-10">
-          <Button
-              size="lg"
-              type="submit"
-              className="w-full text-black flex items-center bg-green justify-center mt-4 hover:bg-[#50c878] hover:text-white"
-            >
-              {loading ? <Loader /> : "Send Code"}
-            </Button>
-         
-            {/* <PinInput
+            <PinInput
               length={6}
               initialValue=""
               secret={false}
@@ -107,9 +111,8 @@ const ConfirmAccountView: React.FC<Props> = ({ loading, formik }) => {
               }}
               autoSelect={true}
               regexCriteria={/^[ A-Za-z0-9_@./#&+-]*$/}
-            /> */}
+            />
           </div>
-          </form>
           <p className="text-green ">
             Didn't receive code? click
             <span
@@ -152,10 +155,7 @@ const ConfirmAccountView: React.FC<Props> = ({ loading, formik }) => {
           </div>
           <p className="text-green ">
             Didn't receive code? click
-            <span
-              className="text-yellow cursor-pointer"
-              onClick={() => resendCode(ogNumber)}
-            >
+            <span className="text-yellow cursor-pointer" onClick={() => resendCode(ogNumber)}>
               <strong> here </strong>
             </span>
             to resend

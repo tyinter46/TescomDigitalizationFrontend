@@ -7,8 +7,6 @@ import { FormikProps } from "formik";
 // import { useAppDispatch } from "hooks";
 // import { confirmAccount, resendConfirmAccountTokenSlice } from "../../redux/slices/auth.slice";
 
-
-
 interface Props {
   loading: boolean;
   // isVerifying: boolean;
@@ -21,21 +19,18 @@ interface Props {
 }
 
 const SignupView: React.FC<Props> = ({ loading, formik }) => {
-
   // const handleOgNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
   //   const value = e.target.value.replace(/^OG/, ""); // Remove existing "OG" if any
   //   formik.setFieldValue("ogNumber", `OG${value}`);
   //   console.log(formik.values.ogNumber)
   // };
 
-
-return  (
+  return (
     <>
       <Navbar />
       <div className="sm: justify-self-center w-full mt-10 h-full padding-20 bg-black-100 p-8 rounded-lg shadow-lg">
         <form onSubmit={formik.handleSubmit} className="space-y-5">
           <div className="gap-4">
-          
             <label htmlFor="ogNumber" className="block text-lg text-yellow-300"></label>
             <FormInput
               required
@@ -48,9 +43,9 @@ return  (
               placeholder="OG-number"
               errors={formik.errors.ogNumber}
               touched={formik.touched.ogNumber}
-              onChange={formik.handleChange}   
-                 />
-         
+              onChange={formik.handleChange}
+            />
+
             <FormInput
               required
               size="lg"
@@ -106,7 +101,6 @@ return  (
         </form>
       </div>
     </>
-  )
-   
-}
-export default SignupView
+  );
+};
+export default SignupView;

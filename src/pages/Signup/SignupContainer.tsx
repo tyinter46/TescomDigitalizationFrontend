@@ -3,7 +3,7 @@ import { useFormik } from "formik";
 // import { useState } from "react";
 import { toast } from "react-toastify";
 import { setOgNumber } from "../../redux/slices/ogNumber.slice";
-import { CONFIRM_ACCOUNT } from "routes/CONSTANTS";
+import { CONFIRM_ACCOUNT, SIGNUP } from "routes/CONSTANTS";
 import { Auth } from "components";
 import { signup } from "../../redux/slices/auth.slice";
 import { useAppDispatch, useAppSelector } from "hooks";
@@ -14,7 +14,7 @@ import { useNavigate } from "react-router-dom";
 
 export const SignupContainer = () => {
   const dispatch = useAppDispatch();
-  const navigate = useNavigate ()
+  const navigate = useNavigate();
   useEffect(() => {}, [dispatch]);
   const { isLoading } = useAppSelector((state) => state.auth);
   // const [isVerifying, setIsVerifying] = useState(false);
@@ -64,15 +64,23 @@ export const SignupContainer = () => {
             );
           }, 5000);
           // isVerifying = true;
+          navigate(CONFIRM_ACCOUNT);
         })
         .catch((error: any) => {
           console.log(error.message);
-          window.location.reload
+          if (
+            error.message ==
+              "An Account Already Exist with this details kindly verify your account" ||
+            error.message ==
+              " You previously created an account, kindly login or Reset your password"
+          ) {
+            navigate(SIGNUP);
+            window.location.reload();
+          }
           setTimeout(() => {
             toast.error(` "${error.message}",  `);
           }, 5000);
         });
-       navigate(CONFIRM_ACCOUNT)
     }
   });
 

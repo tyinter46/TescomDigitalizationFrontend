@@ -1,5 +1,5 @@
-import { whitePolygon, yellowPolygon } from "assets/logos";
-import { adireBg } from "assets/backgrounds";
+// import { whitePolygon, yellowPolygon } from "assets/logos";
+// import { adireBg } from "assets/backgrounds";
 import { Button } from "components/widgets/button";
 import { SIGNUP } from "routes/CONSTANTS";
 

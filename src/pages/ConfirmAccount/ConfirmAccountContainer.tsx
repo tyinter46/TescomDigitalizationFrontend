@@ -4,10 +4,13 @@ import ConfirmAccountView from "./ConfirmAccountView";
 import { useAppSelector, useAppDispatch } from "hooks";
 import { resendConfirmAccountTokenSlice } from  "../../redux/slices/auth.slice";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import { CONFIRM_ACCOUNT } from "routes/CONSTANTS";
 
 
 export const ConfirmAccountContainer = () => {
     const dispatch = useAppDispatch()
+    const navigate = useNavigate ()
    const {isLoading } = useAppSelector ((state)=> state.auth)
    const formik = useFormik({
 
@@ -24,17 +27,28 @@ export const ConfirmAccountContainer = () => {
 
 
          onSubmit: (details) => {
+          // console.log(details.ogNumber)
           dispatch(resendConfirmAccountTokenSlice({ ogNumber: details.ogNumber }))
           .unwrap()
-          .then((res) => {
-            toast.success(`${res.firstName}, code has been resent to ${res.phoneNumber}`);
-          })
+          .then(  (res) => {
+              setTimeout(() => {
+                toast.success(`${res.firstName}, code has been resent to ${res.phoneNumber}`);
+            navigate(CONFIRM_ACCOUNT)
+          }, 5000)
+        }
+        )
           .catch((error) => {
+            console.log(error.message)
+            console.log(details.ogNumber)
+            setTimeout(() => {
             toast.error(`${error.message}`);
-          });
-         }
-        })
-    
+          }, 5000)
+                })
+              } 
+
+            })
+          
+
   return (
     <div>
       <ConfirmAccountView loading ={isLoading} formik = {formik}> </ConfirmAccountView>
