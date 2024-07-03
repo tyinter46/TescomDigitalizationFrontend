@@ -6,7 +6,7 @@ import { resendConfirmAccountTokenSlice } from  "../../redux/slices/auth.slice";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { CONFIRM_ACCOUNT } from "routes/CONSTANTS";
-
+import { maskPhoneNumber } from "utils/maskPhoneNumber";
 
 export const ConfirmAccountContainer = () => {
     const dispatch = useAppDispatch()
@@ -32,7 +32,7 @@ export const ConfirmAccountContainer = () => {
           .unwrap()
           .then(  (res) => {
               setTimeout(() => {
-                toast.success(`${res.firstName}, code has been resent to ${res.phoneNumber}`);
+                toast.success(`${res.firstName}, code has been resent to ${maskPhoneNumber(res.phoneNumber)}`);
             navigate(CONFIRM_ACCOUNT)
           }, 5000)
         }

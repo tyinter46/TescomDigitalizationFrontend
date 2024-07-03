@@ -11,6 +11,7 @@ import { useAppDispatch, useAppSelector } from "hooks";
 import SignupView from "./SignUpView";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { maskPhoneNumber } from "utils/maskPhoneNumber";
 
 export const SignupContainer = () => {
   const dispatch = useAppDispatch();
@@ -58,9 +59,10 @@ export const SignupContainer = () => {
       )
         .unwrap()
         .then((res) => {
+         const phoneNumber =  maskPhoneNumber (res.phoneNumber)
           setTimeout(() => {
             toast.success(
-              `Verification code has been sent to this phone number "${res.phoneNumber}", kindly input the code for verification`
+              `Verification code has been sent to this phone number "${phoneNumber}", kindly input the code for verification`
             );
           }, 5000);
           // isVerifying = true;

@@ -10,6 +10,7 @@ import { FormikProps } from "formik";
 import { FormInput } from "components";
 import { ReactNode } from "react";
 import { Button, Loader } from "components";
+import { maskPhoneNumber } from "utils/maskPhoneNumber";
 
 interface Props {
   loading: boolean;
@@ -36,7 +37,7 @@ const ConfirmAccountView: React.FC<Props> = ({ loading, formik }) => {
     dispatch(confirmAccount({ code: value, ogNumber: assignedOgNumber }))
       .unwrap()
       .then((res) => {
-        toast.success(`${res.ogNumber} has been successfully verified, kindly login`);
+        toast.success(`${res.firstName} has been successfully verified, kindly login`);
         navigate(LOGIN);
       })
       .catch((error: any) => {
@@ -50,7 +51,8 @@ const ConfirmAccountView: React.FC<Props> = ({ loading, formik }) => {
       .then((res) => {
         // const phoneNumber = res.phoneNumber
         // phoneNumber.toString().replace()
-        toast.success(`${res.firstName}, code has been resent to ${res.phoneNumber}`);
+        const phoneNumber = maskPhoneNumber(res.phoneNumber)
+        toast.success(`${res.firstName}, code has been resent to ${phoneNumber}`);
         // navigate(CONFIRM_ACCOUNT)
       })
       .catch((error) => {
