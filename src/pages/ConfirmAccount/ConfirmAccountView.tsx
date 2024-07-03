@@ -3,7 +3,7 @@ import Navbar from "components/modules/navbar/Navbar";
 import { useAppDispatch, useAppSelector } from "hooks";
 import { toast } from "react-toastify";
 import { confirmAccount, resendConfirmAccountTokenSlice } from "../../redux/slices/auth.slice";
-import { LOGIN, CONFIRM_ACCOUNT} from "routes/CONSTANTS";
+import { LOGIN} from "routes/CONSTANTS";
 import { useNavigate } from "react-router-dom";
 import { RootState } from "redux/store";
 import { FormikProps } from "formik";

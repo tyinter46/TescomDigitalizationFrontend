@@ -14,10 +14,10 @@ interface Props {
   userDetails: UserDetails;
   image: string;
   pictureUpload: Function;
-  isLoading: boolean;
+
 }
 
-function ProfileView({ loading, create, userDetails, pictureUpload, isLoading }: Props) {
+function ProfileView({ loading, create, userDetails, pictureUpload }: Props) {
   const [openModal, setOpenModal] = useState<ModalId>(null);
 
   const onsubmit = (updatedProfile: Settings) => {
@@ -34,7 +34,7 @@ function ProfileView({ loading, create, userDetails, pictureUpload, isLoading }:
     <div className="min-h-screen bg-black text-white">
       <Navbar />
 
-      {isLoading ? (
+      {loading ? (
         <p className="flex justify-center text-lg font-semibold text-yellow-500">
           Loading Profile View...
         </p>

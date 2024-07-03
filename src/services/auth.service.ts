@@ -10,7 +10,6 @@ import {
   RESET_PASSWORD,
   LOG_OUT,
   SIGNUP,
-  LOGIN_SUCCESS_URL,
   UPDATE_PASSWORD
 } from "./CONSTANTS";
 
@@ -47,7 +46,7 @@ export const signin = async ({ ogNumber, password }: { ogNumber: string; passwor
 export const loginSuccess = async () => {
   try {
     const config = {
-      url: `${env.API_BASE_URL}/${LOGIN_SUCCESS_URL}`,
+      url: `${env.API_BASE_URL}`,
       method: "get",
       withCredentials: true,
       headers: {

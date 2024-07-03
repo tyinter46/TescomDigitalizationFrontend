@@ -47,7 +47,7 @@ export const ProfileContainer = () => {
         pictureUpload={() => {
           return true;
         }}
-        isLoading={false}
+      
       ></ProfileView>
     </>
   );

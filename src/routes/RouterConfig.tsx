@@ -17,8 +17,7 @@ const RouterConfig: FC = () => {
         <Route path={ABOUT} element={<AboutUs />} />
         <Route path={LOGIN} element={<Login />} />
         <Route path={SIGNUP} element={<Signup />} />
-        <Route path={ABOUT_ME} element={<Profile />} />
-        <Route path={DASHBOARD} element={<Dashboard />} />
+         <Route path={DASHBOARD} element={<Dashboard />} />
 
 
         
@@ -31,11 +30,12 @@ const RouterConfig: FC = () => {
 
 
       {/* Auth pages */}
-        <Route path="/" element={<ProtectedRoute navigate={SIGNUP} />}>
+        <Route path="/" element={<ProtectedRoute navigate={LOGIN} />}>
+        <Route path={ABOUT_ME} element={<Profile />} />
         </Route>
           {/* Protected routes should be placed in here */}
       
-
+     
 
           {/* 404 page */}
           {/* <Route path="*" element={<ErrorPage />} /> */}

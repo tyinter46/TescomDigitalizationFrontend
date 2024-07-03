@@ -20,7 +20,7 @@ const LoginView = ({ loading, formik }: Props) => {
     <>
       <Navbar />
       <div className="sm: justify-self-center w-full mt-40 h-80 ">
-        <form className="space-y-3 bg-black-100 p-8 rounded-lg shadow-lg h-[580px] w-full -mt-[97px] ">
+        <form onSubmit={formik.handleSubmit}  className="space-y-3 bg-black-100 p-8 rounded-lg shadow-lg h-[580px] w-full -mt-[97px] ">
           <div className="gap-8 mt-20">
             <label htmlFor="ogNumber" className="block text-lg text-gray-200"></label>
 
@@ -34,9 +34,7 @@ const LoginView = ({ loading, formik }: Props) => {
               placeholder="OG-number"
               errors={formik.errors.ogNumber}
               touched={formik.touched.ogNumber}
-              onChange={() => {
-                console.log("hi");
-              }}
+              onChange={formik.handleChange}
               className="text-black bg-white"
             />
             <FormInput
@@ -49,9 +47,7 @@ const LoginView = ({ loading, formik }: Props) => {
               placeholder="Enter password"
               errors={formik.errors.password}
               touched={formik.touched.password}
-              onChange={() => {
-                console.log("hi");
-              }}
+              onChange={formik.handleChange}
               className="text-black bg-white"
             />
             <Button
