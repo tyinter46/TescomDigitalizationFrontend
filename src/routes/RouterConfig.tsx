@@ -1,11 +1,11 @@
 import { Routes, Route } from "react-router-dom";
 
-import { Home, Signup, AboutUs, Login, Profile, Dashboard } from "pages";
+import { Home, Signup, AboutUs, Login, Profile, Dashboard, ConfirmAccount } from "pages";
 
-import { HOME, SIGNUP, ABOUT, LOGIN, ABOUT_ME, DASHBOARD } from "./CONSTANTS";
+import { HOME, SIGNUP, ABOUT, LOGIN, ABOUT_ME, DASHBOARD, CONFIRM_ACCOUNT } from "./CONSTANTS";
 
 import type { FC } from "react";
-// import { PublicRoute } from "components/gaurds";
+import { PublicRoute, ProtectedRoute } from "components/gaurds";
 
 const RouterConfig: FC = () => {
   return (
@@ -17,16 +17,28 @@ const RouterConfig: FC = () => {
         <Route path={ABOUT} element={<AboutUs />} />
         <Route path={LOGIN} element={<Login />} />
         <Route path={SIGNUP} element={<Signup />} />
-        <Route path={ABOUT_ME} element={<Profile />} />
-        <Route path={DASHBOARD} element={<Dashboard />} />
-        {/* <Route path="/" element={<PublicRoute />} /> */}
-        {/* Auth pages */}
+         <Route path={DASHBOARD} element={<Dashboard />} />
 
+
+        
+        <Route path="/" element={<PublicRoute />} >
+      
+       
+        <Route path = {CONFIRM_ACCOUNT} element= {<ConfirmAccount /> }/>
         {/* <Route /> */}
+        </Route>
 
-        {/* <Route path="/" element={<ProtectedRoute navigate={SIGNUP} />}> */}
-        {/* Protected routes should be placed in here */}
-        {/* </Route> */}
+
+      {/* Auth pages */}
+        <Route path="/" element={<ProtectedRoute navigate={LOGIN} />}>
+        <Route path={ABOUT_ME} element={<Profile />} />
+        </Route>
+          {/* Protected routes should be placed in here */}
+      
+     
+
+          {/* 404 page */}
+          {/* <Route path="*" element={<ErrorPage />} /> */}
       </Routes>
     </div>
   );

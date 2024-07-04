@@ -1,9 +1,39 @@
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import LoginView from "./LoginView";
+import { useAppDispatch, useAppSelector } from "hooks";
+import { login, loginSuccess } from "../../redux/slices/auth.slice";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import { ABOUT_ME } from "routes/CONSTANTS";
+import { useEffect } from "react";
 
 export const LoginContainer = () => {
-  const isLoading = false;
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const { isLoading, isLoggedIn } = useAppSelector((state) => state.auth);
+
+  const getAuthenticatedUser = async () => {
+    dispatch(loginSuccess())
+      .unwrap()
+      .then(() => {
+        console.log("SUCCESSFULLY LOGGED IN");
+        navigate(ABOUT_ME);
+      })
+      .catch((err) => {
+        console.log(err);
+        setTimeout(() => {
+          toast.error(err.message);
+        }, 5000);
+      });
+  };
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate(ABOUT_ME);
+    }
+  }, [isLoggedIn, navigate]);
+
   const formik = useFormik({
     initialValues: {
       ogNumber: "",
@@ -19,9 +49,20 @@ export const LoginContainer = () => {
           "Weak Password. Password must have at least: 1 upper case, 1 digit, 1 special character, Minimum eight in length"
         )
     }),
-
-    onSubmit: () => {
-      console.log("submitting details");
+    onSubmit: (details) => {
+      dispatch(login({ ogNumber: details.ogNumber, password: details.password }))
+        .unwrap()
+        .then((res) => {
+          console.log(res);
+          toast.success(`Welcome ${res.firstName}`);
+          getAuthenticatedUser();
+       
+        })
+        .catch((error) => {
+          setTimeout(() => {
+            toast.error(`Something went wrong! ${error.message}`);
+          });
+        });
     }
   });
 
