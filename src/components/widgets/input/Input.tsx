@@ -37,21 +37,18 @@ const Input = ({ end, size = "md", className = "", ...props }: Props) => {
           type={"text"}
           className="w-full h-full bg-white text-black text-lg"
           // onChange ={console.log(value: string)}
-          
         />
         <div
-          // className="cursor-pointer text-white"
-          // onClick={() => {
-          //   setPassword(!password);
-          // }}
+        // className="cursor-pointer text-white"
+        // onClick={() => {
+        //   setPassword(!password);
+        // }}
         >
           {/* {password ? "show" : "hide"} */}
         </div>
       </div>
     );
   }
-
-
 
   if (props.type === "password") {
     return (
@@ -90,7 +87,15 @@ const Input = ({ end, size = "md", className = "", ...props }: Props) => {
         disableDropdown={true}
         containerClass={`${className} w-full flex items-center border rounded-[6px] `}
         containerStyle={{ width: "100%" }}
-        inputStyle={{ width: "100%", height: "64px", paddingLeft: "72px", border: "none", fontSize:"18px", color:"white", backgroundColor:"gray"}}
+        inputStyle={{
+          width: "100%",
+          height: "64px",
+          paddingLeft: "72px",
+          border: "none",
+          fontSize: "18px",
+          color: "white",
+          backgroundColor: "gray"
+        }}
         buttonStyle={{
           top: "25%",
           height: "50%",

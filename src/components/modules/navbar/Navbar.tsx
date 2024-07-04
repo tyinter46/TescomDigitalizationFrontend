@@ -1,6 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { HOME, LOGIN, SIGNUP } from "routes/CONSTANTS";
 import { Button } from "components/widgets/button";
+
 // interface Props {
 //     transparent?: boolean;
 // }
@@ -8,6 +9,7 @@ import { ogLogo } from "assets/logos";
 import NavLink from "./NavLink";
 
 const Navbar = () => {
+
   const location = useLocation();
   return (
     <div
@@ -27,7 +29,7 @@ const Navbar = () => {
           <div
             className={location.pathname === "/login" ? "display-hidden" : "mt-2 hover:text-white"}
           >
-            <NavLink to={LOGIN}>Log In</NavLink>
+        <NavLink to={LOGIN}>Log In</NavLink>
           </div>
           <Button
             to={SIGNUP}

@@ -59,7 +59,7 @@ export const SignupContainer = () => {
       )
         .unwrap()
         .then((res) => {
-         const phoneNumber =  maskPhoneNumber (res.phoneNumber)
+          const phoneNumber = maskPhoneNumber(res.phoneNumber);
           setTimeout(() => {
             toast.success(
               `Verification code has been sent to this phone number "${phoneNumber}", kindly input the code for verification`

@@ -1,5 +1,4 @@
-import React from "react";
-import { Formik, Form, Field, FieldArray, ErrorMessage } from "formik";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import { Button } from "components/widgets";
 import { TesClose } from "components/icons";
 import * as Yup from "yup";
@@ -36,7 +35,12 @@ interface ModalProps {
   [key: string]: any;
 }
 
-const ProfileViewModal: React.FC<ModalProps> = ({ title, setOpenModal, onSubmit, userDetails }) => {
+const ProfileViewModal: React.FC<ModalProps> = ({
+  title,
+  setOpenModal,
+  onSubmit,
+  userDetails
+}: ModalProps) => {
   const ProfileViewSchema = Yup.object().shape({
     tscFileNumber: Yup.string().min(9, "Too Short").max(16, "Too Long!").required("Required"),
     schoolOfPresentPosting: Yup.string().min(5, "Too short!").required("Required"),
@@ -131,6 +135,8 @@ const ProfileViewModal: React.FC<ModalProps> = ({ title, setOpenModal, onSubmit,
                       name="tscFileNumber"
                       placeholder="Enter TSC File Number"
                       className="input-field"
+                      // touched = {Formik.errors}
+                      // touched = {Formik.touched}
                     />
                     <ErrorMessage
                       name="tscFileNumber"

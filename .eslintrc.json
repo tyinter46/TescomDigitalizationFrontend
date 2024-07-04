@@ -19,10 +19,10 @@
     "sourceType": "module"
   },
   "plugins": ["react", "@typescript-eslint", "prettier", "promise"],
-
   "rules": {
     "react/react-in-jsx-scope": ["off"],
     "react/jsx-uses-react": ["off"],
+    "react/prop-types": ["off"],
     "@typescript-eslint/strict-boolean-expressions": ["off"],
     "react/jsx-props-no-spreading": ["off"],
     "react/no-unescaped-entities": ["off"],
@@ -31,17 +31,19 @@
     "@typescript-eslint/restrict-template-expressions": ["off"],
     "@typescript-eslint/no-non-null-assertion": ["off"],
     "@typescript-eslint/no-misused-promises": "error",
-    "@typescript-eslint/consistent-type-exports": 0,
+    "@typescript-eslint/consistent-type-imports": 0,
     "@typescript-eslint/no-floating-promises": "error",
     "@typescript-eslint/non-nullable-type-assertion-style": ["off"],
+    "@typescript-eslint/ban-types": ["off"],
+    "no-empty-pattern": ["off"],
     "no-restricted-imports": [
       "error",
       {
         "patterns": ["../"]
       }
-    ]
+    ],
+    "prettier/prettier": "off"
   },
-
   "globals": {
     "window": true,
     "document": true
@@ -52,3 +54,60 @@
     }
   }
 }
+
+// {
+//   "root": true,
+//   "env": {
+//     "browser": true,
+//     "es2021": true,
+//     "jest": true
+//   },
+//   "extends": [
+//     "eslint:recommended",
+//     "plugin:react/recommended",
+//     "standard-with-typescript",
+//     "plugin:prettier/recommended"
+//   ],
+//   "overrides": [],
+//   "parser": "@typescript-eslint/parser",
+//   "parserOptions": {
+//     "project": "./tsconfig.json",
+//     "ecmaVersion": "latest",
+//     "sourceType": "module"
+//   },
+//   "plugins": ["react", "@typescript-eslint", "prettier", "promise"],
+
+//   "rules": {
+//     "react/react-in-jsx-scope": ["off"],
+//     "react/jsx-uses-react": ["off"],
+//     "@typescript-eslint/strict-boolean-expressions": ["off"],
+//     "react/jsx-props-no-spreading": ["off"],
+//     "react/no-unescaped-entities": ["off"],
+//     "@typescript-eslint/no-invalid-void-type": 0,
+//     "@typescript-eslint/explicit-function-return-type": ["off"],
+//     "@typescript-eslint/restrict-template-expressions": ["off"],
+//     "@typescript-eslint/no-non-null-assertion": ["off"],
+//     "@typescript-eslint/no-misused-promises": "error",
+//     "@typescript-eslint/consistent-type-exports": 0,
+//     "@typescript-eslint/no-floating-promises": "error",
+//     "@typescript-eslint/non-nullable-type-assertion-style": ["off"],
+//      "@typescript-eslint/ban-types": ["off"],
+//     "no-restricted-imports": [
+//       "error",
+//       {
+//         "patterns": ["../"]
+//       }
+//     ],
+//        "prettier/prettier": "off"
+//   },
+
+//   "globals": {
+//     "window": true,
+//     "document": true
+//   },
+//   "settings": {
+//     "react": {
+//       "version": "detect"
+//     }
+//   }
+// }

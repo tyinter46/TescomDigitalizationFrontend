@@ -56,7 +56,6 @@ export const LoginContainer = () => {
           console.log(res);
           toast.success(`Welcome ${res.firstName}`);
           getAuthenticatedUser();
-       
         })
         .catch((error) => {
           setTimeout(() => {

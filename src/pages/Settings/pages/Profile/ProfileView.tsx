@@ -14,7 +14,6 @@ interface Props {
   userDetails: UserDetails;
   image: string;
   pictureUpload: Function;
-
 }
 
 function ProfileView({ loading, create, userDetails, pictureUpload }: Props) {

@@ -3,7 +3,7 @@ import Navbar from "components/modules/navbar/Navbar";
 import { useAppDispatch, useAppSelector } from "hooks";
 import { toast } from "react-toastify";
 import { confirmAccount, resendConfirmAccountTokenSlice } from "../../redux/slices/auth.slice";
-import { LOGIN} from "routes/CONSTANTS";
+import { LOGIN } from "routes/CONSTANTS";
 import { useNavigate } from "react-router-dom";
 import { RootState } from "redux/store";
 import { FormikProps } from "formik";
@@ -51,7 +51,7 @@ const ConfirmAccountView: React.FC<Props> = ({ loading, formik }) => {
       .then((res) => {
         // const phoneNumber = res.phoneNumber
         // phoneNumber.toString().replace()
-        const phoneNumber = maskPhoneNumber(res.phoneNumber)
+        const phoneNumber = maskPhoneNumber(res.phoneNumber);
         toast.success(`${res.firstName}, code has been resent to ${phoneNumber}`);
         // navigate(CONFIRM_ACCOUNT)
       })

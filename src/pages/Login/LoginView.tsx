@@ -20,7 +20,10 @@ const LoginView = ({ loading, formik }: Props) => {
     <>
       <Navbar />
       <div className="sm: justify-self-center w-full mt-40 h-80 ">
-        <form onSubmit={formik.handleSubmit}  className="space-y-3 bg-black-100 p-8 rounded-lg shadow-lg h-[580px] w-full -mt-[97px] ">
+        <form
+          onSubmit={formik.handleSubmit}
+          className="space-y-3 bg-black-100 p-8 rounded-lg shadow-lg h-[580px] w-full -mt-[97px] "
+        >
           <div className="gap-8 mt-20">
             <label htmlFor="ogNumber" className="block text-lg text-gray-200"></label>
 

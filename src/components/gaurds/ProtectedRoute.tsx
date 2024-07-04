@@ -1,7 +1,6 @@
 import { useAppSelector } from "hooks";
 import { Navigate, Outlet } from "react-router-dom";
 
-
 interface INavigate {
   navigate: string;
 }
