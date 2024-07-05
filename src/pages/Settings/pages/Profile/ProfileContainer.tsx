@@ -20,6 +20,13 @@ export const ProfileContainer = () => {
         startYear: "1997",
         endYear: "2000",
         degreeType: "Bsc"
+      },
+      {
+        schoolName: "oou",
+        specialization: "agric",
+        startYear: "1997",
+        endYear: "2000",
+        degreeType: "Bsc"
       }
     ],
     dateOfPresentSchoolPosting: "4/6/2023",
@@ -47,7 +54,6 @@ export const ProfileContainer = () => {
         pictureUpload={() => {
           return true;
         }}
-      
       ></ProfileView>
     </>
   );

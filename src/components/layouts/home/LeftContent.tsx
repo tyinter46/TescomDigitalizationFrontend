@@ -5,7 +5,7 @@ import { SIGNUP } from "routes/CONSTANTS";
 
 const LeftContent = () => {
   return (
-    <div className="flex flex-col justify-center items-center w-1/2 h-screen bg-gradient-to-r from-green-500 to-black-100">
+    <div className="flex flex-col justify-center items-center w-1/3 h-screen bg-gradient-to-r from-green-500 to-black-100">
       <div className="text-center mt-20">
         <h4 className="text-white text-4xl font-bold">Simplified.</h4>
         <h4 className="text-yellow-400 text-4xl font-bold">Secure.</h4>
@@ -15,10 +15,11 @@ const LeftContent = () => {
         {/* <img src={yellowPolygon} alt="yellowPolygon" className="w-16 h-16" />
         <img src={whitePolygon} alt="whitePolygon" className="w-16 h-16" /> */}
       </div>
-      <div className="mt-10 text-center gap-[10px]">
+      <div className="mt-10 text-center gap-[50px]">
         <p className="text-white text-lg">
           Unlock Efficiency with Our Advanced Staff Management Platform
         </p>
+        <br />
         <Button
           to={SIGNUP}
           variant="outline"

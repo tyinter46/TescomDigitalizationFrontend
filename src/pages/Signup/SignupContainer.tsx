@@ -59,7 +59,7 @@ export const SignupContainer = () => {
       )
         .unwrap()
         .then((res) => {
-         const phoneNumber =  maskPhoneNumber (res.phoneNumber)
+          const phoneNumber = maskPhoneNumber(res.phoneNumber);
           setTimeout(() => {
             toast.success(
               `Verification code has been sent to this phone number "${phoneNumber}", kindly input the code for verification`
@@ -71,9 +71,9 @@ export const SignupContainer = () => {
         .catch((error: any) => {
           console.log(error.message);
           if (
-            error.message ==
+            error.message ===
               "An Account Already Exist with this details kindly verify your account" ||
-            error.message ==
+            error.message ===
               " You previously created an account, kindly login or Reset your password"
           ) {
             navigate(SIGNUP);

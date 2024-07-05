@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/consistent-type-imports */
 import { Button, FormInput, Loader, Navbar } from "components";
-import { SIGNUP } from "routes/CONSTANTS";
+import { CONFIRM_ACCOUNT, SIGNUP } from "routes/CONSTANTS";
 import { Link } from "react-router-dom";
 import { FormikProps } from "formik";
 
@@ -17,10 +17,13 @@ interface Props {
 
 const LoginView = ({ loading, formik }: Props) => {
   return (
-    <>
+   <>
       <Navbar />
       <div className="sm: justify-self-center w-full mt-40 h-80 ">
-        <form onSubmit={formik.handleSubmit}  className="space-y-3 bg-black-100 p-8 rounded-lg shadow-lg h-[580px] w-full -mt-[97px] ">
+        <form
+          onSubmit={formik.handleSubmit}
+          className="space-y-3 bg-black-100 p-8 rounded-lg shadow-lg h-[580px] w-full -mt-[97px] "
+        >
           <div className="gap-8 mt-20">
             <label htmlFor="ogNumber" className="block text-lg text-gray-200"></label>
 
@@ -57,16 +60,24 @@ const LoginView = ({ loading, formik }: Props) => {
             >
               {loading ? <Loader /> : "Login Account"}
             </Button>
+            <div className="flex flex-row justify-center gap-x-2">
             <p className="my-5 text-lg text-yellow text-center">
               Don't have an account?
               <Link to={SIGNUP}>
-                <span className="text-primary"> Sign up</span>
+                <span className="text-primary"> Sign up </span>
               </Link>
             </p>
+            <p className="my-5 text-lg text-white text-center">
+                Unverified Account? click here to
+              <Link to={CONFIRM_ACCOUNT}>
+                <span className="text-primary"> Verify account</span>
+              </Link>
+            </p>
+            </div>
           </div>
         </form>
       </div>
-    </>
+      </>
   );
 };
 

@@ -9,7 +9,6 @@
 // function confirmAccountAfterSignUp = ()=>{
 //     const dispatch = useAppdispatch()
 
-
 // const onComplete = (value: string, ogNumber: string) => {
 //     dispatch(confirmAccount({ code: value, ogNumber }))
 //       .unwrap()
@@ -32,12 +31,10 @@
 //       });
 //   }
 
-
-
 // return (
 //     <>
 //       <Navbar />
-    
+
 //       <div className="mt-[180px]">
 //         <div className="ml-[120px]">
 //           <PinInput

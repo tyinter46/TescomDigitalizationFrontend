@@ -2,6 +2,9 @@
   "compilerOptions": {
     "target": "es5",
     "baseUrl": "src",
+    "paths": {
+      "redux/*": ["redux/*"]  // Adjust the path based on your project structure
+    },
     "outDir": "build/dist",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
@@ -26,7 +29,7 @@
     // "suppressImplicitAnyIndexErrors": true,
     "experimentalDecorators": true
   },
-  "includes": ["src", "**/*.tsx", "**/*.ts", "**/*.js"],
+  "include": ["src", "**/*.tsx", "**/*.ts", "**/*.js"],
   "exclude": ["node_modules", "build"],
   "typeRoots": ["node_modules/@types", "types"]
 }

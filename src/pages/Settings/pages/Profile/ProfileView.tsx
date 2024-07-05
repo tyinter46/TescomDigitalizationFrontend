@@ -14,7 +14,6 @@ interface Props {
   userDetails: UserDetails;
   image: string;
   pictureUpload: Function;
-
 }
 
 function ProfileView({ loading, create, userDetails, pictureUpload }: Props) {
@@ -130,7 +129,7 @@ function ProfileView({ loading, create, userDetails, pictureUpload }: Props) {
           </div>
           <div className="flex justify-end">
             <Button
-              onClick={() => setOpenModal("form")}
+              onClick={() => {setOpenModal("form")}}
               size="sm"
               type="submit"
               className="w-20 h-12 bg-yellow-500 text-black hover:bg-yellow-600"
