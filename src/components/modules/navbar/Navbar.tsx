@@ -1,17 +1,50 @@
 import { Link, useLocation } from "react-router-dom";
 import { HOME, LOGIN, SIGNUP } from "routes/CONSTANTS";
 import { Button } from "components/widgets/button";
+import { useAppSelector, useAppDispatch } from "hooks";
+import { logout } from "../../../redux/slices/auth.slice";
+import { motion, useCycle, AnimatePresence } from "framer-motion";
+import { Drawer } from "../drawer";
+import { Menu } from "components/widgets";
+import { TesLogout } from "components/icons";
+
+
 
 // interface Props {
 //     transparent?: boolean;
 // }
 import { ogLogo } from "assets/logos";
 import NavLink from "./NavLink";
+import { toast } from "react-toastify";
+
+
+
+
 
 const Navbar = () => {
-
+  const dispatch = useAppDispatch()
+  const {isLoggedIn} = useAppSelector((state)=> state.auth)
   const location = useLocation();
+  const [open, toggle] = useCycle(false, true);
+
+  
+
+  const handleLogout =  ()=>{
+    try {
+      void dispatch (logout())
+    } catch (error: any) {
+      toast.error(error)
+    }
+   
+  }
   return (
+    <motion.div
+    initial={false}
+    animate={open ? "open" : "closed"}
+    // className={`${
+    //   transparent && y <= 40 ? "hidden" : "bg-inherit"
+    // } fixed lg:relative top-0 left-0 right-0 text-black z-50`}
+  >
     <div
       className={
         location.pathname === "/"
@@ -24,12 +57,13 @@ const Navbar = () => {
           <img src={ogLogo} alt="logo here"></img>
         </Link>
       </div>
+      {!isLoggedIn ? (
       <div className="flex flex-row justify-end mt-0">
         <div className="flex flex-row justify-end w-80 gap-4">
           <div
-            className={location.pathname === "/login" ? "display-hidden" : "mt-2 hover:text-white"}
+            className={location.pathname === "/login" ? "display-hidden" : "mt-2 hover:text-green"}
           >
-        <NavLink to={LOGIN}>Log In</NavLink>
+            <NavLink to={LOGIN} >Log In</NavLink>
           </div>
           <Button
             to={SIGNUP}
@@ -43,8 +77,19 @@ const Navbar = () => {
             Sign Up
           </Button>
         </div>
-      </div>
+      </div>) : <>
+      <div
+            className={!isLoggedIn  ? "display-hidden" : "color-white text-white mt-2 hover:text-red"}
+          >
+        <TesLogout size={32} color ="white" onClick ={handleLogout} className="hidden md:block color-white" />
+          </div></>
+            }
+            <div className="flex items-center lg:hidden">
+            <Menu toggle={toggle} />
+          </div>
     </div>
+    <AnimatePresence>{open && <Drawer open={open} />}</AnimatePresence>
+    </motion.div>
   );
 };
 

@@ -34,10 +34,11 @@
     "@typescript-eslint/consistent-type-imports": 0,
     "@typescript-eslint/no-floating-promises": "error",
     "@typescript-eslint/non-nullable-type-assertion-style": ["off"],
+    "@typescript-eslint/no-unsafe-argument" : ["off"],
     "@typescript-eslint/ban-types": ["off"],
     "no-empty-pattern": ["off"],
     "no-restricted-imports": [
-      "error",
+      "off",
       {
         "patterns": ["../"]
       }

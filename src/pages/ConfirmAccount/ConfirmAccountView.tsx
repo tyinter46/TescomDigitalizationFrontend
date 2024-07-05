@@ -7,9 +7,8 @@ import { LOGIN } from "routes/CONSTANTS";
 import { useNavigate } from "react-router-dom";
 import { RootState } from "redux/store";
 import { FormikProps } from "formik";
-import { FormInput } from "components";
 import { ReactNode } from "react";
-import { Button, Loader } from "components";
+import { Button, Loader, FormInput } from "components";
 import { maskPhoneNumber } from "utils/maskPhoneNumber";
 
 interface Props {
@@ -29,7 +28,7 @@ const ConfirmAccountView: React.FC<Props> = ({ loading, formik }) => {
 
   const onComplete = (value: string) => {
     let assignedOgNumber: string;
-    if (ogNumber == "") {
+    if (ogNumber === "") {
       assignedOgNumber = existingAccountOgNumber;
     } else {
       assignedOgNumber = ogNumber;
@@ -51,8 +50,10 @@ const ConfirmAccountView: React.FC<Props> = ({ loading, formik }) => {
       .then((res) => {
         // const phoneNumber = res.phoneNumber
         // phoneNumber.toString().replace()
-        const phoneNumber = maskPhoneNumber(res.phoneNumber);
-        toast.success(`${res.firstName}, code has been resent to ${phoneNumber}`);
+
+        toast.success(
+          `${res.firstName}, code has been resent to ${maskPhoneNumber(res.phoneNumber)}`
+        );
         // navigate(CONFIRM_ACCOUNT)
       })
       .catch((error) => {
@@ -60,7 +61,7 @@ const ConfirmAccountView: React.FC<Props> = ({ loading, formik }) => {
       });
   };
 
-  if (ogNumber == "") {
+  if (ogNumber === "") {
     return isLoading ? (
       <LoadingScreen />
     ) : (
@@ -119,7 +120,9 @@ const ConfirmAccountView: React.FC<Props> = ({ loading, formik }) => {
             Didn't receive code? click
             <span
               className="text-yellow cursor-pointer"
-              onClick={() => resendCode(existingAccountOgNumber)}
+              onClick={() => {
+                resendCode(existingAccountOgNumber);
+              }}
             >
               <strong> here </strong>
             </span>
@@ -157,7 +160,12 @@ const ConfirmAccountView: React.FC<Props> = ({ loading, formik }) => {
           </div>
           <p className="text-green ">
             Didn't receive code? click
-            <span className="text-yellow cursor-pointer" onClick={() => resendCode(ogNumber)}>
+            <span
+              className="text-yellow cursor-pointer"
+              onClick={() => {
+                resendCode(ogNumber);
+              }}
+            >
               <strong> here </strong>
             </span>
             to resend
