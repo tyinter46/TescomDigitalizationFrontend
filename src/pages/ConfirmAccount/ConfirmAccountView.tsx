@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import { confirmAccount, resendConfirmAccountTokenSlice } from "../../redux/slices/auth.slice";
 import { LOGIN } from "routes/CONSTANTS";
 import { useNavigate } from "react-router-dom";
-import { RootState } from "redux/store";
+import { RootState } from "../../redux/store";
 import { FormikProps } from "formik";
 import { ReactNode } from "react";
 import { Button, Loader, FormInput } from "components";
