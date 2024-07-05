@@ -71,9 +71,9 @@ export const SignupContainer = () => {
         .catch((error: any) => {
           console.log(error.message);
           if (
-            error.message ==
+            error.message ===
               "An Account Already Exist with this details kindly verify your account" ||
-            error.message ==
+            error.message ===
               " You previously created an account, kindly login or Reset your password"
           ) {
             navigate(SIGNUP);
