@@ -12,7 +12,7 @@ const NavLink = ({ to, children }: Props) => {
     <Link
       to={to}
       className={`${
-        pathname === to ? "hidden text-primary" : "text-black hover:text-white"
+        pathname === to ? "hidden text-primary" : "text-green hover:text-white"
       } pb-px px-1`}
     >
       {children}

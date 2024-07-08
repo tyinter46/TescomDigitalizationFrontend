@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/consistent-type-imports */
 import { Button, FormInput, Loader, Navbar } from "components";
-import { CONFIRM_ACCOUNT, SIGNUP } from "routes/CONSTANTS";
+import { CONFIRM_ACCOUNT } from "routes/CONSTANTS";
 import { Link } from "react-router-dom";
 import { FormikProps } from "formik";
 
@@ -36,7 +36,7 @@ const LoginView = ({ loading, formik }: Props) => {
               label="Enter your OG-Number"
               placeholder="OG-number"
               errors={formik.errors.ogNumber}
-              touched={formik.touched.ogNumber}
+              // touched={formik.touched.ogNumber}
               onChange={formik.handleChange}
               className="text-black bg-white"
             />
@@ -49,7 +49,7 @@ const LoginView = ({ loading, formik }: Props) => {
               label="Enter password"
               placeholder="Enter password"
               errors={formik.errors.password}
-              touched={formik.touched.password}
+              // touched={formik.touched.password}
               onChange={formik.handleChange}
               className="text-black bg-white"
             />
@@ -62,15 +62,15 @@ const LoginView = ({ loading, formik }: Props) => {
             </Button>
             <div className="flex flex-row justify-center gap-x-2">
             <p className="my-5 text-lg text-yellow text-center">
-              Don't have an account?
-              <Link to={SIGNUP}>
-                <span className="text-primary"> Sign up </span>
-              </Link>
+            Forgot Password? 
+              {/* <Link to={}>
+                <span className="text-green"> Click here </span>
+              </Link> */}
             </p>
             <p className="my-5 text-lg text-white text-center">
                 Unverified Account? click here to
               <Link to={CONFIRM_ACCOUNT}>
-                <span className="text-primary"> Verify account</span>
+                <span className="text-green"> Verify account</span>
               </Link>
             </p>
             </div>

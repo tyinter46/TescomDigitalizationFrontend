@@ -59,17 +59,20 @@ export const SignupContainer = () => {
       )
         .unwrap()
         .then((res) => {
-          const phoneNumber = maskPhoneNumber(res.phoneNumber);
+          console.log(res)
+          const phoneNumber = maskPhoneNumber(details.phoneNumber);
+          // console.log(res.newUser.staffName.firstName)
+          console.log(phoneNumber)
           setTimeout(() => {
             toast.success(
-              `Verification code has been sent to this phone number "${phoneNumber}", kindly input the code for verification`
+              `${res.name} Verification code has been sent to this phone number "${phoneNumber}", kindly input the code for verification`
             );
           }, 5000);
           // isVerifying = true;
           navigate(CONFIRM_ACCOUNT);
         })
         .catch((error: any) => {
-          console.log(error.message);
+          console.log(error.message)
           if (
             error.message ===
               "An Account Already Exist with this details kindly verify your account" ||

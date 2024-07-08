@@ -1,17 +1,34 @@
 /* eslint-disable @typescript-eslint/consistent-type-imports */
 import ProfileView from "./ProfileView";
 import { UserDetails } from "types";
+import { useAppSelector } from "hooks";
+import { getLongDate } from "utils";
+// import FormData from "form-data"
+// import axios from "axios";
+// import env from "configs";
 
 export const ProfileContainer = () => {
+  const {user} = useAppSelector((state)=> state.auth)
+
+console.log(user)
+const dateOfBirth = getLongDate(user?.user?._doc?.dateOfBirth)
+const dateOfFirstAppointment = getLongDate(user?.user?._doc?.dateOfFirstAppointment)
+const dateOfRetirement = getLongDate(user?.user?._doc?.dateOfRetirement)
+
+
   const userDetails: UserDetails = {
-    _id: "gucjdhc",
-    tscFileNumber: "TSC/N/2635",
-    schoolOfPresentPosting: "JHGHJC",
+    _id: user?.user?._doc.id,
+    staffName: user?.user?._doc?.staffName.firstName,  
+    dateOfBirth: dateOfBirth,
+    dateOfFirstAppointment: dateOfFirstAppointment,
+    dateOfRetirement: dateOfRetirement ,
+    tscFileNumber: "tsc/n/5456",
+    schoolOfPresentPosting: "",
     zone: "ADO ODO",
     division: "Yewa",
     nationality: "Nigerian",
     stateOfOrigin: "Ogun",
-    lgOgOrigin: "Ad odo",
+    lgOgOrigin: "Ado odo",
     ward: "4",
     qualifications: [
       {
@@ -42,6 +59,19 @@ export const ProfileContainer = () => {
     professionalStatus: "prof",
     email: "tyg@687.com"
   };
+
+// const handleImageUpload = async (event: React.ChangeEvent<HTMLInputElement>)=>{
+// const files = event.target.files
+// if(files){
+//   const formData = new FormData ()
+//   formData.append('file', files[0])
+
+//   const response = await axios.post("",{
+
+//   })
+// }  
+// }
+
   return (
     <>
       <ProfileView

@@ -16,8 +16,10 @@ export const LoginContainer = () => {
   const getAuthenticatedUser = async () => {
     dispatch(loginSuccess())
       .unwrap()
-      .then(() => {
+      .then((res) => {
         console.log("SUCCESSFULLY LOGGED IN");
+        console.log(res)
+        // toast.success(r)
         navigate(ABOUT_ME);
       })
       .catch((err) => {
