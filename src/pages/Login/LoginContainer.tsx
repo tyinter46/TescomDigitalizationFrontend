@@ -48,7 +48,7 @@ export const LoginContainer = () => {
         .required("Password is required")
         .matches(
           /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/,
-          "Weak Password. Password must have at least: 1 upper case, 1 digit, 1 special character, Minimum eight in length"
+          "kindly check the validity of your ogNumber and password again"
         )
     }),
     onSubmit: (details) => {
@@ -57,7 +57,10 @@ export const LoginContainer = () => {
         .then((res) => {
           console.log(res);
           toast.success(`Welcome ${res.firstName}`);
-          getAuthenticatedUser().catch((error) =>{ toast.error(error)});
+          window.location.reload()
+          getAuthenticatedUser().then(()=>{
+            toast.success("logged in successfully")
+          }).catch((error) =>{ toast.error(error)});
         })
         .catch((error) => {
           setTimeout(() => {
