@@ -36,7 +36,7 @@ const LoginView = ({ loading, formik }: Props) => {
               label="Enter your OG-Number"
               placeholder="OG-number"
               errors={formik.errors.ogNumber}
-              // touched={formik.touched.ogNumber}
+              touched={formik.touched.ogNumber}
               onChange={formik.handleChange}
               className="text-black bg-white"
             />
@@ -49,7 +49,7 @@ const LoginView = ({ loading, formik }: Props) => {
               label="Enter password"
               placeholder="Enter password"
               errors={formik.errors.password}
-              // touched={formik.touched.password}
+              touched={formik.touched.password}
               onChange={formik.handleChange}
               className="text-black bg-white"
             />

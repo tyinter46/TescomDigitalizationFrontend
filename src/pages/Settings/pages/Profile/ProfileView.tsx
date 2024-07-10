@@ -80,21 +80,21 @@ function ProfileView({ loading, create, userDetails, pictureUpload }: Props) {
           <div className="p-4 bg-green-800 border-color-white border-2 rounded-md shadow-md mb-6">
             <div className="flex flex-col sm:flex-row">
               <div className="p-2">
-                <div className="text-sm font-semibold text-yellow-500">Full Name</div>
+                <div className="text-md font-semibold text-yellow-500">Full Name</div>
                 <span className="text-lg">
                   {userDetails.staffName} 
                 </span>
               </div>
               <div className="p-2">
-                <div className="text-sm font-semibold text-yellow-500">Date of Birth</div>
+                <div className="text-md font-semibold text-yellow-500">Date of Birth</div>
                 <span className="text-lg">{userDetails.dateOfBirth}</span>
               </div>
               <div className="p-2">
-                <div className="text-sm font-semibold text-yellow-500">Date of First Appointment</div>
+                <div className="text-md font-semibold text-yellow-500">Date of First Appointment</div>
                 <span className="text-lg">{userDetails.dateOfFirstAppointment}</span>
               </div>
               <div className="p-2">
-                <div className="text-sm font-semibold text-yellow-500">Date of First Retirement</div>
+                <div className="text-md font-semibold text-yellow-500">Date of First Retirement</div>
                 <span className="text-lg">{userDetails.dateOfRetirement}</span>
               </div>
             </div>
@@ -102,37 +102,47 @@ function ProfileView({ loading, create, userDetails, pictureUpload }: Props) {
           <div className="p-4 bg-green-800  border-color-white border-2  rounded-md shadow-md mb-6">
             <div className="flex flex-col sm:flex-row">
               <div className="p-2 flex-1">
-                <div className="text-sm font-semibold text-yellow-500">Address</div>
+                <div className="text-md font-semibold text-yellow-500">Address</div>
                 <span className="text-lg">{userDetails?.tscFileNumber || "-"}</span>
               </div>
               <div className="p-2 flex-1">
-                <div className="text-sm font-semibold text-yellow-500">Zip</div>
-                <span className="text-lg">{userDetails?.schoolOfPresentPosting || "-"}</span>
+                <div className="text-md font-semibold text-yellow-500">OG Number</div>
+                <span className="text-lg"> {userDetails?.ogNumber}</span>
               </div>
               <div className="p-2 flex-1">
-                <div className="text-sm font-semibold text-yellow-500">City</div>
+                <div className="text-md font-semibold text-yellow-500">City</div>
                 <span className="text-lg">{userDetails?.zone || "-"}</span>
               </div>
             </div>
             <div className="flex flex-col sm:flex-row">
               <div className="p-2 flex-1">
-                <div className="text-sm font-semibold text-yellow-500">State</div>
+                <div className="text-md font-semibold text-yellow-500">State</div>
                 <span className="text-lg">{userDetails?.division || "-"}</span>
               </div>
               <div className="p-2 flex-1">
-                <div className="text-sm font-semibold text-yellow-500">Country</div>
+                <div className="text-md font-semibold text-yellow-500">Country</div>
                 <span className="text-lg">{userDetails?.nationality || "-"}</span>
               </div>
             </div>
           </div>
           <div className="p-4 bg-green-800  border-color-white border-2  rounded-md shadow-md mb-6 flex flex-col sm:flex-row">
             <div className="p-2 flex-1">
-              <div className="text-sm font-semibold text-yellow-500">Phone Number</div>
+              <div className="text-md font-semibold text-yellow-500">Phone Number</div>
               <span className="text-lg">{userDetails?.phoneNumber || "-"}</span>
             </div>
             <div className="p-2 flex-1">
-              <div className="text-sm font-semibold text-yellow-500">Email Address</div>
+              <div className="text-md font-semibold text-yellow-500">Email Address</div>
               <span className="text-lg">{userDetails?.email || "-"}</span>
+            </div>
+          </div>
+          <div className="p-4 bg-green-800  border-color-white border-2  rounded-md shadow-md mb-6 flex flex-col sm:flex-row">
+            <div className="p-2 flex-1">
+              <div className="text-md font-semibold text-yellow-500">File Number</div>
+              <span className="text-lg">{userDetails?.tscFileNumber || "-"}</span>
+            </div>
+            <div className="p-2 flex-1">
+              <div className="text-md font-semibold text-yellow-500">Cadre</div>
+              <span className="text-lg">{userDetails?.cadre || "-"}</span>
             </div>
           </div>
           <div className="flex justify-end">

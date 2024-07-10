@@ -35,8 +35,8 @@ export const signup = createAsyncThunk(
         confirmPhoneNumber
       });
       toast.success(MESSAGE);
-      console.log(DATA);
-      return { userId: DATA.id, name: DATA.user.firstName };
+      console.log(DATA)
+      return { userId: DATA.id, name: DATA.user?.staffName?.firstName };
     } catch (error) {
       const message = formatErrorResponse(error);
       toast.error(message);
@@ -64,7 +64,8 @@ export const login = createAsyncThunk(
   async ({ ogNumber, password }: { ogNumber: string; password: string }, thunkAPI) => {
     try {
       const { DATA } = await AuthService.signin({ ogNumber, password });
-      return { userId: DATA.id, ogNumber: DATA.ogNumber, firstName: DATA.user.firstName };
+      console.log(DATA)
+      return { userId: DATA.user.id, ogNumber: DATA.user.ogNumber, firstName: DATA.user._doc.staffName.firstName };
     } catch (error) {
       const message = formatErrorResponse(error);
       toast.error(message);
