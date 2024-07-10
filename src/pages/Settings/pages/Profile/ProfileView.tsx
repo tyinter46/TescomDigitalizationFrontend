@@ -38,14 +38,14 @@ function ProfileView({ loading, create, userDetails, pictureUpload }: Props) {
           Loading Profile View...
         </p>
       ) : (
-        <div className="mt-8 p-6 bg-white-700 rounded-lg shadow-md">
+        <div className="mt-6 p-6 bg-white-700 rounded-lg shadow-md">
           <Formik
             initialValues={{}}
             onSubmit={handlePhotoUpload}
             enableReinitialize
             validationSchema={{}}
           >
-            <div className="relative flex justify-center mt-8 overflow-hidden">
+            <div className="relative flex justify-center mt-10 overflow-hidden">
               <div className="relative flex items-center flex-col mb-6 w-32 h-32">
                 <div className="relative shadow rounded-full w-full h-full">
                   <img
@@ -82,12 +82,20 @@ function ProfileView({ loading, create, userDetails, pictureUpload }: Props) {
               <div className="p-2">
                 <div className="text-sm font-semibold text-yellow-500">Full Name</div>
                 <span className="text-lg">
-                  {"First Name"} {"Last Name"}
+                  {userDetails.staffName} 
                 </span>
               </div>
               <div className="p-2">
                 <div className="text-sm font-semibold text-yellow-500">Date of Birth</div>
-                <span className="text-lg">{" 20 March, 2024"}</span>
+                <span className="text-lg">{userDetails.dateOfBirth}</span>
+              </div>
+              <div className="p-2">
+                <div className="text-sm font-semibold text-yellow-500">Date of First Appointment</div>
+                <span className="text-lg">{userDetails.dateOfFirstAppointment}</span>
+              </div>
+              <div className="p-2">
+                <div className="text-sm font-semibold text-yellow-500">Date of First Retirement</div>
+                <span className="text-lg">{userDetails.dateOfRetirement}</span>
               </div>
             </div>
           </div>

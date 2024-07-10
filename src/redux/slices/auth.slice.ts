@@ -35,7 +35,8 @@ export const signup = createAsyncThunk(
         confirmPhoneNumber
       });
       toast.success(MESSAGE);
-      return { userId: DATA.id, phoneNumber: DATA.phoneNumber, ogNumber: DATA.ogNumber };
+      console.log(DATA)
+      return { userId: DATA.id, name: DATA.user };
     } catch (error) {
       const message = formatErrorResponse(error);
       toast.error(message);

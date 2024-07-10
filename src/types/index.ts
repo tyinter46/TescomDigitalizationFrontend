@@ -5,7 +5,11 @@ export type AppDispatch = typeof store.dispatch;
 
 export interface UserDetails {
   _id: string;
+  staffName: string;
   tscFileNumber: string;
+  dateOfBirth: string;
+  dateOfFirstAppointment: string;
+  dateOfRetirement: string;
   schoolOfPresentPosting: string;
   zone: string;
   division: string;
@@ -92,6 +96,12 @@ export interface Qualifications {
   startYear: string;
   endYear: string;
   schoolName: string;
+}
+
+export interface imageResponse {
+  STATUS: String;
+  MESSAGE: String;
+  DATA: any;
 }
 
 export interface ExistingStaffDetails {}
