@@ -22,14 +22,15 @@ const dateOfRetirement = getLongDate(user?.user?._doc?.dateOfRetirement)
     dateOfBirth: dateOfBirth,
     dateOfFirstAppointment: dateOfFirstAppointment,
     dateOfRetirement: dateOfRetirement ,
-    tscFileNumber: "tsc/n/5456",
+    tscFileNumber: "-",
+    phoneNumber: user?.user?._doc.phoneNumber,
     schoolOfPresentPosting: "",
-    zone: "ADO ODO",
-    division: "Yewa",
-    nationality: "Nigerian",
-    stateOfOrigin: "Ogun",
-    lgOgOrigin: "Ado odo",
-    ward: "4",
+    zone: "",
+    division: "-",
+    nationality: "-",
+    stateOfOrigin: "-",
+    lgOgOrigin: "-",
+    ward: "-",
     qualifications: [
       {
         schoolName: "oou",
@@ -46,18 +47,18 @@ const dateOfRetirement = getLongDate(user?.user?._doc?.dateOfRetirement)
         degreeType: "Bsc"
       }
     ],
-    dateOfPresentSchoolPosting: "4/6/2023",
-    cadre: "senior teacher",
+    dateOfPresentSchoolPosting: "-",
+    cadre: "-",
     // dateOfFirstAppointment?: Date;
     // dateOfLastPromotion?: Date;
     // dateOfBirth?: Date;
-    gradeLevel: "6",
-    pfa: "first pen",
-    pensionNumber: "764565867",
+    gradeLevel: "-",
+    pfa: "-",
+    pensionNumber: "-",
     ogNumber: "46454",
     // dateOfRetirement?: Date;
-    professionalStatus: "prof",
-    email: "tyg@687.com"
+    professionalStatus: "-",
+    email: "-"
   };
 
 // const handleImageUpload = async (event: React.ChangeEvent<HTMLInputElement>)=>{

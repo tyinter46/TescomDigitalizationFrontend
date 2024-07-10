@@ -128,7 +128,7 @@ function ProfileView({ loading, create, userDetails, pictureUpload }: Props) {
           <div className="p-4 bg-green-800  border-color-white border-2  rounded-md shadow-md mb-6 flex flex-col sm:flex-row">
             <div className="p-2 flex-1">
               <div className="text-sm font-semibold text-yellow-500">Phone Number</div>
-              <span className="text-lg">{userDetails?.dateOfPresentSchoolPosting || "-"}</span>
+              <span className="text-lg">{userDetails?.phoneNumber || "-"}</span>
             </div>
             <div className="p-2 flex-1">
               <div className="text-sm font-semibold text-yellow-500">Email Address</div>

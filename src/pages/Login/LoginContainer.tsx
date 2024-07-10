@@ -19,8 +19,11 @@ export const LoginContainer = () => {
       .then((res) => {
         console.log("SUCCESSFULLY LOGGED IN");
         console.log(res)
-        // toast.success(r)
+        setTimeout(() => {
+         toast.success(`Welcome ${res.user.user._doc.staffName.firstName}`)
+        }, 5000);
         navigate(ABOUT_ME);
+        window.location.reload()
       })
       .catch((err) => {
         console.log(err);
@@ -32,9 +35,12 @@ export const LoginContainer = () => {
 
   useEffect(() => {
     if (isLoggedIn) {
+      
       navigate(ABOUT_ME);
+
+   
     }
-  }, [isLoggedIn, navigate]);
+  }, [isLoggedIn]);
 
   const formik = useFormik({
     initialValues: {
@@ -56,8 +62,10 @@ export const LoginContainer = () => {
         .unwrap()
         .then((res) => {
           console.log(res);
-          toast.success(`Welcome ${res.firstName}`);
           getAuthenticatedUser().catch((error) =>{ toast.error(error)});
+          setTimeout(()=>{toast.success(`Welcome ${res.firstName}`)}, 5000)
+          
+          
         })
         .catch((error) => {
           setTimeout(() => {

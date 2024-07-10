@@ -6,6 +6,7 @@ export type AppDispatch = typeof store.dispatch;
 export interface UserDetails {
   _id: string;
   staffName: string;
+  phoneNumber: string;
   tscFileNumber: string;
   dateOfBirth: string;
   dateOfFirstAppointment: string;
