@@ -3,12 +3,27 @@ import ProfileView from "./ProfileView";
 import { UserDetails } from "types";
 import { useAppSelector } from "hooks";
 import { getLongDate } from "utils";
+import { loginSuccess } from "services/auth.service";
+// import { loginSuccess } from "../../../../redux/slices/auth.slice";
+import { useEffect } from "react";
+// import {toast} from "react-toastify" 
 // import FormData from "form-data"
 // import axios from "axios";
 // import env from "configs";
 
 export const ProfileContainer = () => {
+  // const dispatch = useAppDispatch()
   const {user} = useAppSelector((state)=> state.auth)
+  
+  useEffect(() => {
+    loginSuccess().then(()=>{
+      console.log("user login successful auth service")
+    }).catch((err)=>{
+      console.error(err)
+    })
+    
+  }, []);
+  
 
 console.log(user)
 const dateOfBirth = getLongDate(user?.user?._doc?.dateOfBirth)
@@ -22,14 +37,16 @@ const dateOfRetirement = getLongDate(user?.user?._doc?.dateOfRetirement)
     dateOfBirth: dateOfBirth,
     dateOfFirstAppointment: dateOfFirstAppointment,
     dateOfRetirement: dateOfRetirement ,
-    tscFileNumber: "tsc/n/5456",
+    ogNumber: user?.user?._doc?.ogNumber,
+    phoneNumber: user?.user?._doc.phoneNumber,
+    tscFileNumber: "",
     schoolOfPresentPosting: "",
-    zone: "ADO ODO",
-    division: "Yewa",
-    nationality: "Nigerian",
-    stateOfOrigin: "Ogun",
-    lgOgOrigin: "Ado odo",
-    ward: "4",
+    zone: "",
+    division: "",
+    nationality: "",
+    stateOfOrigin: "",
+    lgOgOrigin: "",
+    ward: "",
     qualifications: [
       {
         schoolName: "oou",
@@ -46,18 +63,17 @@ const dateOfRetirement = getLongDate(user?.user?._doc?.dateOfRetirement)
         degreeType: "Bsc"
       }
     ],
-    dateOfPresentSchoolPosting: "4/6/2023",
-    cadre: "senior teacher",
+    dateOfPresentSchoolPosting: "",
+    cadre: "",
     // dateOfFirstAppointment?: Date;
     // dateOfLastPromotion?: Date;
     // dateOfBirth?: Date;
-    gradeLevel: "6",
-    pfa: "first pen",
-    pensionNumber: "764565867",
-    ogNumber: "46454",
-    // dateOfRetirement?: Date;
-    professionalStatus: "prof",
-    email: "tyg@687.com"
+    gradeLevel: "",
+    pfa: "",
+    pensionNumber: "",
+     // dateOfRetirement?: Date;
+    professionalStatus: "",
+    email: ""
   };
 
 // const handleImageUpload = async (event: React.ChangeEvent<HTMLInputElement>)=>{

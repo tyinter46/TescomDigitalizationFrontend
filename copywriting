@@ -1,3 +1,9 @@
+Windows Subsystem for Linux is now available in the Microsoft Store!
+You can upgrade by running 'wsl.exe --update' or by visiting https://aka.ms/wslstorepage
+Installing WSL from the Microsoft Store will give you the latest WSL updates, faster.
+For more information please visit https://aka.ms/wslstoreinfo
+
+
 Welcome to [Your Company Name], your all-in-one solution for seamless management of teaching and non-teaching staff. Our platform is designed to empower educational institutions by efficiently storing and processing all staff-related data while streamlining essential HR business logic. Here's how we make managing your workforce a breeze:
 
 Simplified Staff Data Management

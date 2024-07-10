@@ -22,7 +22,7 @@ const FormInput = ({ id, label, errors, touched, required, ...rest }: Props) => 
         {...rest}
         className={`${
           error
-            ? "border-red text-red text-lg font-bold placeholder:text-red"
+            ? "border-blue text-red text-lg font-bold placeholder:text-red"
             : " text-lg maxLength-10"
         } w-full`}
       />
