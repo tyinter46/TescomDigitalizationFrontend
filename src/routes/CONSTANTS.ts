@@ -12,3 +12,4 @@ export const PROFILE = "/auth/users/:id";
 export const CONFIRM_ACCOUNT = "/confirmAccount";
 
 export const DASHBOARD = "/dashboard";
+export const SCHOOL = "/schools";

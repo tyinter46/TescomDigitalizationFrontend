@@ -1,0 +1,109 @@
+import { Navbar } from "components";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { fetchSchools } from "../../services/schools.service";
+
+interface ISchools {
+    _id?: string;
+    nameOfSchool: string;
+    category: string;
+    address: string;
+    location: string;
+    zone: string;
+    division: string;
+    listOfStaff: any;
+    principal: any;
+    vicePrincipalAdmin: any;
+    vicePrincipalAcademics: any;
+    latitude: string;
+    longitude: string;
+}
+
+export const SchoolView: React.FC = () => {
+    const [schools, setSchools] = useState<ISchools[]>([]);
+    const [openSchoolId, setOpenSchoolId] = useState<string | null>(null);
+    const [loading, setLoading] = useState<boolean>(true);
+    const [error, setError] = useState<string | null>(null);
+
+    useEffect(() => {
+        const loadSchools = async () => {
+            try {
+                const fetchedSchools = await fetchSchools();
+                setSchools(fetchedSchools);
+            } catch (error) {
+                setError('Failed to fetch schools');
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        void loadSchools()
+    }, []); // Empty dependency array means this effect runs once when the component mounts
+
+    const handleToggle = (_id: string) => {
+        setOpenSchoolId(openSchoolId === _id ? null : _id);
+    };
+
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p>{error}</p>;
+
+    return (
+        <>
+            <Navbar />
+            <div className="flex flex-col h-screen w-full bg-gray-900 mt-12 gap-2 justify-start p-5">
+                {schools.map(school => (
+                    <div key={school._id} className="flex flex-col w-full">
+                        <div 
+                            className="flex flex-row justify-between items-center min-h-[20px] bg-gray-700 w-full p-1 z-3 cursor-pointer"
+                            onClick={() => {handleToggle(school._id!)}} // Use `school._id!` to assert that `_id` is defined
+                        >
+                            <p className="text-white">{school.nameOfSchool}</p>
+                            <h5 className="text-white">{openSchoolId === school._id ? '-' : '+'}</h5>
+                        </div>
+                        <AnimatePresence>
+                            {openSchoolId === school._id && (
+                                <motion.div
+                                    initial={{ height: 0 }}
+                                    animate={{ height: 'auto' }}
+                                    exit={{ height: 0 }}
+                                    transition={{ duration: 0.3 }}
+                                    className="overflow-hidden bg-gray-200 w-full p-1"
+                                >
+                                <div className="bg-white max-h-[500px] w-inherit overflow-auto">
+                                    <p className="text-black">{school.nameOfSchool}</p>
+                                     <p className="text-black">{school.nameOfSchool}</p>
+                                     <p className="text-black">{school.nameOfSchool}</p>
+                                     <p className="text-black">{school.nameOfSchool}</p>
+                                     <p className="text-black">{school.nameOfSchool}</p>
+                                     <p className="text-black">{school.nameOfSchool}</p>
+                                     <p className="text-black">{school.nameOfSchool}</p>
+
+                                     <p className="text-black">{school.nameOfSchool}</p>
+                                     <p className="text-black">{school.nameOfSchool}</p>
+                                     <p className="text-black">{school.nameOfSchool}</p>
+                                     <p className="text-black">{school.nameOfSchool}</p>
+                                     <p className="text-black">{school.nameOfSchool}</p>
+                                     <p className="text-black">{school.nameOfSchool}</p>
+                                     <p className="text-black">{school.nameOfSchool}</p>
+                                     <p className="text-black">{school.nameOfSchool}</p>
+                                     <p className="text-black">{school.nameOfSchool}</p>
+                                     <p className="text-black">{school.nameOfSchool}</p>
+
+                                     <p className="text-black">{school.nameOfSchool}</p>
+                                     <p className="text-black">{school.nameOfSchool}</p>
+                                     <p className="text-black">{school.nameOfSchool}</p>
+                                     <p className="text-black">{school.nameOfSchool}</p>
+                                     <p className="text-black">{school.nameOfSchool}</p>
+                                 
+
+                                  
+                                    </div>
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
+                    </div>
+                ))}
+            </div>
+        </>
+    );
+};

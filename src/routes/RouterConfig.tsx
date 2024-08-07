@@ -1,8 +1,8 @@
 import { Routes, Route } from "react-router-dom";
 
-import { Home, Signup, AboutUs, Login, Profile, Dashboard, ConfirmAccount } from "pages";
+import { Home, Signup, AboutUs, Login, Profile, Dashboard, ConfirmAccount, School } from "pages";
 
-import { HOME, SIGNUP, ABOUT, LOGIN, ABOUT_ME, DASHBOARD, CONFIRM_ACCOUNT } from "./CONSTANTS";
+import { HOME, SIGNUP, ABOUT, LOGIN, ABOUT_ME, DASHBOARD, CONFIRM_ACCOUNT, SCHOOL } from "./CONSTANTS";
 
 import type { FC } from "react";
 import { PublicRoute, ProtectedRoute } from "components/gaurds";
@@ -26,6 +26,7 @@ const RouterConfig: FC = () => {
 
         {/* Auth pages */}
         <Route path="/" element={<ProtectedRoute navigate={LOGIN} />}>
+        <Route path = {SCHOOL} element = {<School />} />
           <Route path={ABOUT_ME} element={<Profile />} />
         </Route>
         {/* Protected routes should be placed in here */}

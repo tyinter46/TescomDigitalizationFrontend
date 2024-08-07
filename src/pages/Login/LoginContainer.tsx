@@ -62,16 +62,20 @@ export const LoginContainer = () => {
         .unwrap()
         .then((res) => {
           console.log(res);
+          setTimeout(() => {
           toast.success(`Welcome ${res.firstName}`);
+        }, 5000);
           window.location.reload()
           getAuthenticatedUser().then(()=>{
+          
             toast.success("logged in successfully")
+       
           }).catch((error) =>{ toast.error(error)});
         })
         .catch((error) => {
           setTimeout(() => {
-            toast.error(`Something went wrong! ${error.message}`);
-          });
+            toast.error(`Something went wrong! ${error}`);
+          },1000);
         });
     }
   });
